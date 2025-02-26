@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>My_Staff_Contacts</fullName>
+    <columns>FULL_NAME</columns>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>CONTACT.PHONE1</columns>
+    <columns>CONTACT.EMAIL</columns>
+    <columns>CONTACT.TITLE</columns>
+    <columns>CORE.USERS.ALIAS</columns>
+    <filterScope>Mine</filterScope>
+    <label>My Staff Contacts</label>
+    <sharedTo>
+        <role>HC_Mgr_SJ_1</role>
+        <role>HC_Mgr_SJ_2</role>
+        <role>HC_Mgr_SJ_3</role>
+        <role>Program_Director</role>
+        <role>RC_Mgr_SJ</role>
+    </sharedTo>
+</ListView>

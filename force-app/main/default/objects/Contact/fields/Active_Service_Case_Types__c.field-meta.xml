@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Active_Service_Case_Types__c</fullName>
+    <externalId>false</externalId>
+    <formula>LEFT(
+
+  IF( Active_CMH_Service_Case__c, &quot;CMH; &quot;, Null) &amp;  
+  IF( Active_FS_Service_Case__c, &quot;FS; &quot;, Null) &amp;  
+  IF( Active_HPS_Service_Case__c, &quot;HPS; &quot;, Null) &amp;  
+  IF( Active_HC_Service_Case__c, &quot;HC; &quot;, Null) &amp;  
+  IF( Active_RC_Service_Case__c, &quot;RC; &quot;, Null),
+
+  LEN(
+    IF( Active_CMH_Service_Case__c, &quot;CMH; &quot;, Null) &amp;  
+    IF( Active_FS_Service_Case__c, &quot;FS; &quot;, Null) &amp;  
+    IF( Active_HPS_Service_Case__c, &quot;HPS; &quot;, Null) &amp;  
+    IF( Active_HC_Service_Case__c, &quot;HC; &quot;, Null) &amp;  
+    IF( Active_RC_Service_Case__c, &quot;RC; &quot;, Null)
+  ) - 2
+
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Active Service Case Types</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

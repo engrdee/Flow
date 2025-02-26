@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Essential_Fields_Missing_Basic__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(ISBLANK(TEXT(Gender__c)), &quot;Gender;&quot;, &quot;&quot;) &amp;
+IF(ISBLANK(TEXT(Race__c)), &quot;Race;&quot;, &quot;&quot;) &amp;
+IF(ISBLANK(Birthdate), &quot;Birthdate;&quot;, &quot;&quot;) &amp;
+IF(ISBLANK(TEXT(Language__c)), &quot;Language;&quot;, &quot;&quot;) &amp;
+IF(ISBLANK(Primary_Contact_Name__c), &quot;Primary Contact Name;&quot;, &quot;&quot;) &amp;
+IF(ISBLANK(Primary_Contact_Phone__c), &quot;Primary Contact Phone;&quot;, &quot;&quot;) &amp;
+IF(ISBLANK(Emergency_Contact_Name__c), &quot;Emergency Contact Name;&quot;, &quot;&quot;) &amp;
+IF(ISBLANK(Emergency_Contact_Phone__c), &quot;Emergency Contact Phone;&quot;, &quot;&quot;) &amp;
+IF(ISBLANK(Service_Coordinator_Name__c), &quot;Service Coordinator Name;&quot;, &quot;&quot;) &amp;
+IF(ISBLANK(Service_Coordinator_Email__c), &quot;Service Coordinator Email;&quot;, &quot;&quot;) &amp;
+IF(ISBLANK(Service_Coordinator_Phone__c), &quot;Service Coordinator Phone;&quot;, &quot;&quot;) &amp;
+IF(ISBLANK(MailingStreet), &apos;Street; &apos;, &apos;&apos;) &amp;
+IF(ISBLANK(MailingCity), &apos;City; &apos;, &apos;&apos;) &amp;
+IF(ISBLANK(MailingPostalCode), &apos;Zip Code; &apos;, &apos;&apos;) &amp;
+IF(ISBLANK(MailingState), &apos;State; &apos;, &apos;&apos;) &amp;
+
+IF(ISBLANK(TEXT(Head_of_Household__c)), &apos;Head Of Household; &apos;, &apos;&apos;) &amp;
+IF(ISNULL(Accessibility_Needs__c), &quot;Accessibility Needs;&quot;, &quot;&quot;) &amp;
+IF(ISBLANK(TEXT(Limited_Mobility__c)), &apos;Limited Mobility; &apos;, &apos;&apos;) &amp;
+IF(ISBLANK(TEXT(Pet_Non_Service_Animal__c)), &apos;Pet Non Service Animal; &apos;, &apos;&apos;) &amp;
+IF(ISBLANK(TEXT(Service_Animal__c)), &apos;Service Animal; &apos;, &apos;&apos;) &amp;
+IF(ISBLANK(Transportation_Method__c), &apos;Transportation Method; &apos;, &apos;&apos;) &amp;
+IF(ISBLANK(TEXT(Would_Consider_Roommate__c)), &apos;Would Consider Roommate; &apos;, &apos;&apos;) &amp;
+IF(ISBLANK(TEXT(Has_Section_8_Voucher__c)), &apos;Has Section 8 Voucher; &apos;, &apos;&apos;) &amp;
+
+
+IF(ISBLANK(TEXT(Has_Family_Contact__c)), &quot;Has Family Contact;&quot;, &quot;&quot;) &amp;
+IF(AND(TEXT(Has_Family_Contact__c) = &quot;Yes&quot;, OR(ISBLANK(Family_Contact_Name__c), ISBLANK(Family_Contact_Phone__c) )), &quot;Family Contact Name or Phone;&quot;, &quot;&quot;) &amp;
+
+IF(ISBLANK(TEXT(Paid_Support_Type__c)), &quot;Paid Support Type;&quot;, &quot;&quot;) &amp;
+IF(AND(TEXT(Paid_Support_Type__c) &lt;&gt; &quot;No Support&quot;, OR(ISBLANK(Paid_Support_Name__c), ISBLANK(Paid_Support_Phone__c), ISBLANK(Paid_Support_Agency__c) )), &quot;Paid Support Name, Agency, or Phone;&quot;, &quot;&quot;) &amp;
+
+IF(ISBLANK(TEXT(Conserved__c)), &quot;Conserved;&quot;, &quot;&quot;) &amp;
+IF(AND(TEXT(Conserved__c) = &quot;Yes&quot;, OR(ISBLANK(Conservator_Name__c), ISBLANK(Conservator_Phone__c) )), &quot;Conservator Name or Phone;&quot;, &quot;&quot;) &amp;
+
+IF(ISBLANK(TEXT(Rep_Payee__c)), &quot;Rep Payee;&quot;, &quot;&quot;) &amp;
+IF(AND(TEXT(Rep_Payee__c) = &quot;Yes&quot;, OR(ISBLANK(Rep_Payee_Name__c), ISBLANK(Rep_Payee_Phone__c) )), &quot;Rep Payee Name or Phone;&quot;, &quot;&quot;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Essential Fields Missing Basic</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

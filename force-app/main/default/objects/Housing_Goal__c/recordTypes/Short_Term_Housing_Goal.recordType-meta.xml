@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Short_Term_Housing_Goal</fullName>
+    <active>true</active>
+    <label>Short Term Housing Goal</label>
+    <picklistValues>
+        <picklist>Housing_Goal__c</picklist>
+        <values>
+            <fullName>Apply for supportive services needed to live independently</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Assemble missing documentation needed to apply for housing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Create a monthly budget</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Evaluate roommate options</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Improve household income</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Maintain Housing Choice Voucher while searching for housing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Maintain current housing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Obtain%2C review and improve credit report</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Secure emergency or short-term housing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Secure emergency rental assistance to maintain current housing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Start saving for security deposit%2Ffirst month%E2%80%99s rent</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

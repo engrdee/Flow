@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AdminAnyFieldErrors__c</fullName>
+    <externalId>false</externalId>
+    <formula>OR(
+  ISBLANK(TEXT(Gender__c)),
+  ISBLANK(TEXT(Race__c)),
+  AdminBirthdateBlank__c = TRUE,
+  AdminMoveInDateBlank__c = TRUE,
+  Partner_Property_Error__c = TRUE,
+  AdminRecertificationDateIssue__c = TRUE,
+  AdminAnnualCheckInDateIssue__c = TRUE,
+  AdminLanguageBlank__c = TRUE,
+  AdminAccessibilityBlank__c = TRUE,
+  AdminFamilyBlank__c = TRUE,
+  AdminPaidSupportBlank__c = TRUE,
+  AdminPaidSupportBlank__c = TRUE,
+
+  ISBLANK(Primary_Contact_Name__c),
+  ISBLANK(Primary_Contact_Phone__c),
+
+  ISBLANK(Emergency_Contact_Name__c),
+  ISBLANK(Emergency_Contact_Phone__c),
+
+  ISBLANK(Service_Coordinator_Name__c),
+  ISBLANK(Service_Coordinator_Phone__c),
+  ISBLANK(Service_Coordinator_Email__c),
+
+  ISBLANK(TEXT(Conserved__c)),
+  ISBLANK(Conservator_Name__c),
+  ISBLANK(Conservator_Phone__c),
+  ISBLANK(Conservator_Email__c),
+
+  ISBLANK(TEXT(Rep_Payee__c)),
+  ISBLANK(Rep_Payee_Name__c),
+  ISBLANK(Rep_Payee_Phone__c),
+  ISBLANK(Rep_Payee_Email__c)
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>AdminAnyFieldErrors</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Pippin_WaterSt_Closed</fullName>
+    <active>true</active>
+    <errorConditionFormula>IF(
+    $User.FirstName = &quot;Peter&quot; &amp;&amp; $User.LastName = &quot;Carter&quot;,
+    FALSE,
+
+    IF(
+        TEXT(Property__r.Status__c) = &quot;Closed&quot;,
+        TRUE,
+        FALSE
+    )
+)</errorConditionFormula>
+    <errorDisplayField>Property__c</errorDisplayField>
+    <errorMessage>This waitlist is closed. New waitlist entries cannot be added at this time.</errorMessage>
+</ValidationRule>

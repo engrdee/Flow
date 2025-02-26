@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Essential_RC_Fields_Missing_Part_1</fullName>
+    <booleanFilter>(1 OR 2 OR 4 OR 5) AND 3</booleanFilter>
+    <columns>FULL_NAME</columns>
+    <columns>Partner_Property__c</columns>
+    <columns>Move_in_Date__c</columns>
+    <columns>Annual_Regional_Center_Check_in_Date__c</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>Partner_Property__c</field>
+        <operation>equals</operation>
+    </filters>
+    <filters>
+        <field>Move_in_Date__c</field>
+        <operation>equals</operation>
+    </filters>
+    <filters>
+        <field>Active_RC_Service_Case__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <filters>
+        <field>Annual_Regional_Center_Check_in_Date__c</field>
+        <operation>equals</operation>
+    </filters>
+    <label>My Clients Essential Fields Missing RC</label>
+    <sharedTo>
+        <group>Leadership</group>
+        <role>RC_W</role>
+        <roleAndSubordinates>RC_Mgr_SJ</roleAndSubordinates>
+    </sharedTo>
+</ListView>

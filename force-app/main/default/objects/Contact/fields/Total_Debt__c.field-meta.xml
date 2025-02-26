@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Debt__c</fullName>
+    <externalId>false</externalId>
+    <label>Total Debt</label>
+    <summarizedField>Asset_Debt__c.Amount__c</summarizedField>
+    <summaryFilterItems>
+        <field>Asset_Debt__c.RecordTypeId</field>
+        <operation>equals</operation>
+        <value>Debt</value>
+    </summaryFilterItems>
+    <summaryForeignKey>Asset_Debt__c.Contact__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <type>Summary</type>
+</CustomField>

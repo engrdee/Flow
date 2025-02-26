@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Primary_Contact_Must_Include_Ph_or_Email</fullName>
+    <active>true</active>
+    <errorConditionFormula>IF
+(
+    OR
+    (
+        CONTAINS($User.User_Profile_Name__c, &quot;System&quot;),
+        CONTAINS($User.User_Profile_Name__c, &quot;Manager&quot;),
+        CONTAINS($User.FirstName&amp;$User.LastName, &quot;Automated&quot;), 
+        IsAutomationBypassed__c = True
+    ),
+    False,
+
+IF
+(
+    ISPICKVAL(Primary_Contact_List__c, &quot;&quot;),
+    False,
+
+IF
+(
+    TEXT(Primary_Contact_List__c) = &quot;Client&quot;,
+    
+    OR
+    (
+        ISBLANK(LastName),
+
+        AND
+        (
+            ISBLANK(Client_Phone__c),
+            ISBLANK(Client_Email__c)
+        )
+    ),
+
+IF
+(
+    TEXT(Primary_Contact_List__c) = &quot;Family Contact&quot;,
+    OR
+    (
+        ISBLANK(Family_Contact_Name__c),
+
+        AND
+        (
+            ISBLANK(Family_Contact_Phone__c),
+            ISBLANK(Family_Contact_Email__c)
+        )
+    ),
+
+IF
+(
+    TEXT(Primary_Contact_List__c) = &quot;Paid Support Contact&quot;,
+    OR
+    (
+        ISBLANK(Paid_Support_Name__c),
+
+        AND
+        (
+            ISBLANK(Paid_Support_Phone__c),
+            ISBLANK(Paid_Support_Email__c)
+        )
+    ),
+
+IF
+(
+    TEXT(Primary_Contact_List__c) = &quot;Service Coordinator&quot;,
+    OR
+    (
+        ISBLANK(Service_Coordinator_Name__c),
+
+        AND
+        (
+            ISBLANK(Service_Coordinator_Phone__c),
+            ISBLANK(Service_Coordinator_Email__c)
+        )
+    ),
+
+IF
+(
+    TEXT(Primary_Contact_List__c) = &quot;Conservator&quot;,
+    OR
+    (
+        ISBLANK(Conservator_Name__c),
+
+        AND
+        (
+            ISBLANK(Conservator_Email__c),
+            ISBLANK(Conservator_Phone__c)
+        )
+    ),
+
+IF
+(
+    TEXT(Primary_Contact_List__c) = &quot;Rep Payee&quot;,
+    OR
+    (
+        ISBLANK(Rep_Payee_Name__c),
+
+        AND
+        (
+            ISBLANK(Rep_Payee_Phone__c),
+            ISBLANK(Rep_Payee_Email__c)
+        )
+    ),
+
+IF
+(
+    TEXT(Primary_Contact_List__c) = &quot;Other&quot;,
+    OR
+    (
+        ISBLANK(Other_Name__c),
+
+        AND
+        (
+            ISBLANK(Other_Phone__c),
+            ISBLANK(Other_Email__c)
+        )
+    ),
+
+    False
+
+)))))))))</errorConditionFormula>
+    <errorMessage>The Primary Contact type you&apos;ve chosen must have a designated name and either a phone or email</errorMessage>
+</ValidationRule>

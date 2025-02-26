@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Essential_Fields_Incomplete_Running_User__c</fullName>
+    <externalId>false</externalId>
+    <formula>LEN( Essential_Fields_Missing_Basic__c ) +
+
+IF( 
+  $User.User_Profile_Name__c = &quot;RC&quot; ||  CONTAINS($UserRole.Name, &quot;RC&quot;) ,
+
+  LEN(Essential_Fields_Missing_RC__c),
+  LEN(Essential_Fields_Missing_HC__c)
+) 
+
+&gt; 0</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Essential Fields Incomplete Running User</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

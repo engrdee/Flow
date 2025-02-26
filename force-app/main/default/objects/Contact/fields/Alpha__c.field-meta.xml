@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Alpha__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE
+(
+    LEFT(LastName,1),
+    &quot;a&quot;, &quot;A-H&quot;,
+    &quot;A&quot;, &quot;A-H&quot;,
+    &quot;b&quot;, &quot;A-H&quot;,
+    &quot;B&quot;, &quot;A-H&quot;,
+    &quot;c&quot;, &quot;A-H&quot;,
+    &quot;C&quot;, &quot;A-H&quot;,
+    &quot;d&quot;, &quot;A-H&quot;,
+    &quot;D&quot;, &quot;A-H&quot;,
+    &quot;e&quot;, &quot;A-H&quot;,
+    &quot;E&quot;, &quot;A-H&quot;,
+    &quot;f&quot;, &quot;A-H&quot;,
+    &quot;F&quot;, &quot;A-H&quot;,
+    &quot;g&quot;, &quot;A-H&quot;,
+    &quot;G&quot;, &quot;A-H&quot;,
+    &quot;h&quot;, &quot;A-H&quot;,
+    &quot;H&quot;, &quot;A-H&quot;,
+    &quot;i&quot;, &quot;I-Q&quot;,
+    &quot;I&quot;, &quot;I-Q&quot;,
+    &quot;j&quot;, &quot;I-Q&quot;,
+    &quot;J&quot;, &quot;I-Q&quot;,
+    &quot;k&quot;, &quot;I-Q&quot;,
+    &quot;K&quot;, &quot;I-Q&quot;,
+    &quot;l&quot;, &quot;I-Q&quot;,
+    &quot;L&quot;, &quot;I-Q&quot;,
+    &quot;m&quot;, &quot;I-Q&quot;,
+    &quot;M&quot;, &quot;I-Q&quot;,
+    &quot;n&quot;, &quot;I-Q&quot;,
+    &quot;N&quot;, &quot;I-Q&quot;,
+    &quot;o&quot;, &quot;I-Q&quot;,
+    &quot;O&quot;, &quot;I-Q&quot;,
+    &quot;p&quot;, &quot;I-Q&quot;,
+    &quot;P&quot;, &quot;I-Q&quot;,
+    &quot;q&quot;, &quot;I-Q&quot;,
+    &quot;Q&quot;, &quot;I-Q&quot;,
+    &quot;r&quot;, &quot;R-Z&quot;,
+    &quot;R&quot;, &quot;R-Z&quot;,
+    &quot;s&quot;, &quot;R-Z&quot;,
+    &quot;S&quot;, &quot;R-Z&quot;,
+    &quot;t&quot;, &quot;R-Z&quot;,
+    &quot;T&quot;, &quot;R-Z&quot;,
+    &quot;u&quot;, &quot;R-Z&quot;,
+    &quot;U&quot;, &quot;R-Z&quot;,
+    &quot;v&quot;, &quot;R-Z&quot;,
+    &quot;V&quot;, &quot;R-Z&quot;,
+    &quot;w&quot;, &quot;R-Z&quot;,
+    &quot;W&quot;, &quot;R-Z&quot;,
+    &quot;x&quot;, &quot;R-Z&quot;,
+    &quot;X&quot;, &quot;R-Z&quot;,
+    &quot;y&quot;, &quot;R-Z&quot;,
+    &quot;Y&quot;, &quot;R-Z&quot;,
+    &quot;z&quot;, &quot;R-Z&quot;,
+    &quot;Z&quot;, &quot;R-Z&quot;,
+    &quot;R-Z&quot;
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Alpha</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Waitlist_Compact_Layout</fullName>
+    <fields>Accessibility_Needs__c</fields>
+    <fields>Contact__c</fields>
+    <fields>Household_Number__c</fields>
+    <fields>Number_of_Bedrooms__c</fields>
+    <fields>Waitlist_Timestamp__c</fields>
+    <fields>Property__c</fields>
+    <fields>Name</fields>
+    <label>Waitlist Compact Layout</label>
+</CompactLayout>

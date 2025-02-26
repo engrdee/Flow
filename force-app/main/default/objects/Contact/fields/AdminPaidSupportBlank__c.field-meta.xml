@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AdminPaidSupportBlank__c</fullName>
+    <externalId>false</externalId>
+    <formula>OR
+(
+    ISBLANK(TEXT( Paid_Support_Type__c )),
+
+    AND
+    (
+        TEXT( Paid_Support_Type__c ) &lt;&gt; &quot;No Support&quot;,
+        
+        OR
+        (
+            ISBLANK(Paid_Support_Name__c),
+            ISBLANK(Paid_Support_Agency__c), 
+            ISBLANK(Paid_Support_Phone__c)
+        )
+    )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>AdminPaidSupportBlank</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

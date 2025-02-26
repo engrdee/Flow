@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Client_w_Active_RC_Must_Have_Property</fullName>
+    <active>false</active>
+    <errorConditionFormula>IF(
+  IsAutomationBypassed__c = True,
+  False,
+
+  AND( 
+    Active_RC_Service_Case__c,
+    TEXT(Partner_Property__c) = Null
+  )
+)</errorConditionFormula>
+    <errorDisplayField>Partner_Property__c</errorDisplayField>
+    <errorMessage>A client with an Active RC Service Case must have a Partner Property Selected</errorMessage>
+</ValidationRule>

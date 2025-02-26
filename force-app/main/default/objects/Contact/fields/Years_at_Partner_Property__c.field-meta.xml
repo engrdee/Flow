@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Years_at_Partner_Property__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF
+(
+    AND
+    (
+        NOT(ISBLANK(TEXT(Partner_Property__c))),
+        ISBLANK(TEXT(Move_in_Date__c))=False
+    ), 
+
+    (TODAY() - Move_in_Date__c)/365, 
+
+    IF
+    (
+    
+        AND
+        (
+            ISBLANK(TEXT(Partner_Property__c))=False,
+            ISBLANK(TEXT(Move_in_Date__c))=True
+        ),
+         Null, 
+
+        IF
+        (
+            ISBLANK(TEXT(Partner_Property__c))=True, 0,
+            Null
+        )
+    )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Years at Partner Property</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

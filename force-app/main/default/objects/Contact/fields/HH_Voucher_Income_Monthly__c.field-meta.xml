@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HH_Voucher_Income_Monthly__c</fullName>
+    <externalId>false</externalId>
+    <label>HH Voucher Income Monthly</label>
+    <summarizedField>Income_Source__c.Monthly_Income__c</summarizedField>
+    <summaryFilterItems>
+        <field>Income_Source__c.Income_Type__c</field>
+        <operation>equals</operation>
+        <value>Voucher</value>
+    </summaryFilterItems>
+    <summaryForeignKey>Income_Source__c.Contact__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <type>Summary</type>
+</CustomField>

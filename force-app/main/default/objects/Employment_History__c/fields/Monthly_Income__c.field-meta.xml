@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Monthly_Income__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE( TEXT(Annual_or_Hourly__c),
+  &quot;Annual&quot;, ROUND(Yearly_Income__c / 12,0),
+  &quot;Hourly&quot;, ROUND(Hourly_Wage__c * Hours_Per_Week__c * 4.35, 0),
+  Null
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Monthly Income</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

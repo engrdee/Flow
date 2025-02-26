@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Essential_Fields_Missing_Part_4</fullName>
+    <booleanFilter>1 OR ((2 OR 3) AND 4) OR 5 OR ((6 OR 7) AND 8)</booleanFilter>
+    <columns>FULL_NAME</columns>
+    <columns>Conserved__c</columns>
+    <columns>Conservator_Name__c</columns>
+    <columns>Conservator_Email__c</columns>
+    <columns>Conservator_Phone__c</columns>
+    <columns>Rep_Payee__c</columns>
+    <columns>Rep_Payee_Name__c</columns>
+    <columns>Rep_Payee_Email__c</columns>
+    <columns>Rep_Payee_Phone__c</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>Conserved__c</field>
+        <operation>equals</operation>
+    </filters>
+    <filters>
+        <field>Conservator_Name__c</field>
+        <operation>equals</operation>
+    </filters>
+    <filters>
+        <field>Conservator_Phone__c</field>
+        <operation>equals</operation>
+    </filters>
+    <filters>
+        <field>Conserved__c</field>
+        <operation>equals</operation>
+        <value>Yes</value>
+    </filters>
+    <filters>
+        <field>Rep_Payee__c</field>
+        <operation>equals</operation>
+    </filters>
+    <filters>
+        <field>Rep_Payee_Name__c</field>
+        <operation>equals</operation>
+    </filters>
+    <filters>
+        <field>Rep_Payee_Phone__c</field>
+        <operation>equals</operation>
+    </filters>
+    <filters>
+        <field>Rep_Payee__c</field>
+        <operation>equals</operation>
+        <value>Yes</value>
+    </filters>
+    <label>My Clients Essential Fields Missing Pt 4</label>
+</ListView>

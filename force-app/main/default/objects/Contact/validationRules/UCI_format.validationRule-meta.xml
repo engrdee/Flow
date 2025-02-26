@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>UCI_format</fullName>
+    <active>true</active>
+    <errorConditionFormula>IF(
+  RecordType.Name = &quot;Donor&quot;,
+  False,
+
+  IF(
+    LEN(UCI__c) != 7,
+    TRUE,
+
+    IF(
+      OR(
+        ISBLANK(UCI__c), 
+        LEFT(UCI__c,3) = &quot;FS-&quot;,
+        LEFT(UCI__c,3) = &quot;HPS&quot;
+      ),
+      FALSE,
+      NOT(ISNUMBER(UCI__c))
+
+    )
+  )
+)</errorConditionFormula>
+    <errorDisplayField>UCI__c</errorDisplayField>
+    <errorMessage>UCI must be 7 numerical digits 
+If client is HPS only, UCI must with &quot;HPS&quot;
+If client is FS only, UCI must with &quot;FS&quot;</errorMessage>
+</ValidationRule>

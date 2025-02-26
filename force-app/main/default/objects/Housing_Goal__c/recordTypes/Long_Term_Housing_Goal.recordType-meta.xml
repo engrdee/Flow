@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Long_Term_Housing_Goal</fullName>
+    <active>true</active>
+    <label>Long Term Housing Goal</label>
+    <picklistValues>
+        <picklist>Housing_Goal__c</picklist>
+        <values>
+            <fullName>Apply for other appropriate affordable housing wait lists</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Get on appropriate wait lists for Housing Choice Partner Properties</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Search for appropriate market rate housing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Search for appropriate market rate housing which accepts Section 8</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

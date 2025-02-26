@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>My_Active_Clients_Individual_Staff</fullName>
+    <columns>FULL_NAME</columns>
+    <columns>Client_Email__c</columns>
+    <columns>Client_Phone__c</columns>
+    <columns>CONTACT.ADDRESS2_STREET</columns>
+    <columns>CONTACT.ADDRESS2_CITY</columns>
+    <columns>CONTACT.ADDRESS2_ZIP</columns>
+    <columns>Primary_Contact_Name__c</columns>
+    <columns>Primary_Contact_Phone__c</columns>
+    <columns>Primary_Contact_Email__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>notEqual</operation>
+        <value>Closed</value>
+    </filters>
+    <filters>
+        <field>CORE.USERS.FIRST_NAME</field>
+        <operation>equals</operation>
+        <value>America</value>
+    </filters>
+    <filters>
+        <field>CORE.USERS.LAST_NAME</field>
+        <operation>equals</operation>
+        <value>Guiterrez</value>
+    </filters>
+    <label>Active Clients - Individual Staff</label>
+    <sharedTo>
+        <group>Leadership</group>
+    </sharedTo>
+</ListView>

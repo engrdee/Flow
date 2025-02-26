@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>StatusFormula__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( ISNULL(Date_Submitted__c) || ISBLANK(Date_Submitted__c), &quot;Draft&quot;, &quot;Submitted&quot;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>StatusFormula</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

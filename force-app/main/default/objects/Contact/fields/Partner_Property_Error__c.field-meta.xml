@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Partner_Property_Error__c</fullName>
+    <externalId>false</externalId>
+    <formula>AND(
+  OR(
+    Active_RC_Service_Case__c = True,
+    Active_FS_Service_Case__c = True
+  ),
+  ISBLANK(TEXT( Partner_Property__c ))
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Partner Property Error</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Debt</fullName>
+    <active>true</active>
+    <label>Debt</label>
+    <picklistValues>
+        <picklist>Asset_or_Debt_Type__c</picklist>
+        <values>
+            <fullName>Credit Card Debt</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mortage</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other consumer debt</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paydate Loan</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

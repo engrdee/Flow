@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>My_Clients_btwn_4_5_y_o</fullName>
+    <columns>FULL_NAME</columns>
+    <columns>CONTACT.BIRTHDATE</columns>
+    <columns>Client_County__c</columns>
+    <columns>Language__c</columns>
+    <columns>Age__c</columns>
+    <columns>Age_Four_and_a_Half_Warn_Active__c</columns>
+    <columns>CORE.USERS.FIRST_NAME</columns>
+    <columns>CORE.USERS.LAST_NAME</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>notEqual</operation>
+        <value>Closed</value>
+    </filters>
+    <filters>
+        <field>Active_HC_Service_Case__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <filters>
+        <field>CONTACT.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Contact.Client</value>
+    </filters>
+    <filters>
+        <field>Age_Four_and_a_Half_Warn_Active__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <label>My Clients btwn 4-5 y/o</label>
+    <sharedTo>
+        <group>HC_Users</group>
+        <group>Leadership</group>
+    </sharedTo>
+</ListView>

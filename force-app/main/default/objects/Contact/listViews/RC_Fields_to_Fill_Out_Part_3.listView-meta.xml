@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RC_Fields_to_Fill_Out_Part_3</fullName>
+    <booleanFilter>1 OR 2 OR 3 OR 4 OR 5</booleanFilter>
+    <columns>FULL_NAME</columns>
+    <columns>Emergency_Contact_Name__c</columns>
+    <columns>Emergency_Contact_Email__c</columns>
+    <columns>Emergency_Contact_Phone__c</columns>
+    <columns>Service_Coordinator_Name__c</columns>
+    <columns>Service_Coordinator_Email__c</columns>
+    <columns>Service_Coordinator_Phone__c</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>Emergency_Contact_Name__c</field>
+        <operation>equals</operation>
+    </filters>
+    <filters>
+        <field>Emergency_Contact_Phone__c</field>
+        <operation>equals</operation>
+    </filters>
+    <filters>
+        <field>Service_Coordinator_Email__c</field>
+        <operation>equals</operation>
+    </filters>
+    <filters>
+        <field>Service_Coordinator_Email__c</field>
+        <operation>equals</operation>
+    </filters>
+    <filters>
+        <field>Service_Coordinator_Phone__c</field>
+        <operation>equals</operation>
+    </filters>
+    <label>My Clients Essential Fields Missing Pt 2</label>
+</ListView>

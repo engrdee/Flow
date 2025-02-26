@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Contact_Mgr_is_Housing_Goal_Creator_Mgr__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+  Contact__r.Owner.ManagerId = CreatedBy.ManagerId,
+  &quot;Team&quot;,
+  Null
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Contact Mgr is Housing Goal Creator Mgr</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

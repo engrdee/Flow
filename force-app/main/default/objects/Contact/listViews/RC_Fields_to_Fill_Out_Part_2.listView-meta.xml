@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RC_Fields_to_Fill_Out_Part_2</fullName>
+    <booleanFilter>1 OR 2</booleanFilter>
+    <columns>FULL_NAME</columns>
+    <columns>Has_Family_Contact__c</columns>
+    <columns>Family_Contact_Name__c</columns>
+    <columns>Family_Relationship__c</columns>
+    <columns>Family_Contact_Email__c</columns>
+    <columns>Family_Contact_Phone__c</columns>
+    <columns>Paid_Support_Type__c</columns>
+    <columns>Paid_Support_Name__c</columns>
+    <columns>Paid_Support_Agency__c</columns>
+    <columns>Paid_Support_Email__c</columns>
+    <columns>Paid_Support_Phone__c</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>AdminFamilyBlank__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <filters>
+        <field>AdminPaidSupportBlank__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <label>My Clients Essential Fields Missing Pt 3</label>
+</ListView>

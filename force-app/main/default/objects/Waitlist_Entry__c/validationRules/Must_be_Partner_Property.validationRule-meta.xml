@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Must_be_Partner_Property</fullName>
+    <active>true</active>
+    <errorConditionFormula>Property__r.RecordType.Name != &quot;Partner Property&quot;</errorConditionFormula>
+    <errorDisplayField>Property__c</errorDisplayField>
+    <errorMessage>You must choose a Partner Property</errorMessage>
+</ValidationRule>

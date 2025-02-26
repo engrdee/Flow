@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>UCI_Error__c</fullName>
+    <externalId>false</externalId>
+    <formula>AND(
+
+  RecordType.Name = &quot;Client&quot;,
+  TEXT(Status__c) != &quot;Closed&quot;,
+
+  OR(
+    Active_HC_Service_Case__c = True,
+    Active_RC_Service_Case__c = True,
+    Active_CMH_Service_Case__c = True
+  ),
+      
+  OR(
+    LEN(UCI__c) != 7,
+    NOT(ISNUMBER(UCI__c)),
+    LEFT(UCI__c, 2) = &quot;00&quot;
+  )
+
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>UCI Error</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

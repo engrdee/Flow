@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Adult_or_Minor__c</fullName>
+    <externalId>false</externalId>
+    <label>Adult or Minor</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Adult_Or_Minor</valueSetName>
+    </valueSet>
+</CustomField>

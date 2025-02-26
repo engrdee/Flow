@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FormulaPast6Months__c</fullName>
+    <externalId>false</externalId>
+    <formula>Date_Submitted__c &gt; ADDMONTHS(TODAY(),-6)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>FormulaPast6Months</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

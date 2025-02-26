@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Housing_Member_Belongs_to_Contact_Owner__c</fullName>
+    <externalId>false</externalId>
+    <formula>Contact__r.Contact_owner_ID__c = CreatedBy.Id</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Housing Member Belongs to Contact Owner</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

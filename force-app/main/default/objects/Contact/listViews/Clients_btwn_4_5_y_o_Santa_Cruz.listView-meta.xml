@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Clients_btwn_4_5_y_o_Santa_Cruz</fullName>
+    <columns>FULL_NAME</columns>
+    <columns>CONTACT.BIRTHDATE</columns>
+    <columns>Client_County__c</columns>
+    <columns>Language__c</columns>
+    <columns>Age__c</columns>
+    <columns>Age_Four_and_a_Half_Warn_Active__c</columns>
+    <columns>CORE.USERS.FIRST_NAME</columns>
+    <columns>CORE.USERS.LAST_NAME</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>notEqual</operation>
+        <value>Closed</value>
+    </filters>
+    <filters>
+        <field>Active_HC_Service_Case__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <filters>
+        <field>CONTACT.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Contact.Client</value>
+    </filters>
+    <filters>
+        <field>Client_County__c</field>
+        <operation>equals</operation>
+        <value>Santa Cruz</value>
+    </filters>
+    <filters>
+        <field>Age_Four_and_a_Half_Warn_Active__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <label>Clients btwn 4-5 y/o Santa Cruz</label>
+    <sharedTo>
+        <group>Leadership</group>
+        <roleAndSubordinates>HC_Mgr_W_1</roleAndSubordinates>
+        <roleAndSubordinates>HC_Mgr_W_2</roleAndSubordinates>
+    </sharedTo>
+</ListView>

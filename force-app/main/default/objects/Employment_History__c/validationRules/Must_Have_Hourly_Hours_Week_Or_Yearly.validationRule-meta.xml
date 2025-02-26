@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Must_Have_Hourly_Hours_Week_Or_Yearly</fullName>
+    <active>false</active>
+    <errorConditionFormula>IF(
+  AND(
+    ISBLANK(Hourly_Wage__c),
+    ISBLANK(Hours_Per_Week__c),
+    ISBLANK(Yearly_Income__c)
+  ),TRUE,
+FALSE
+)</errorConditionFormula>
+    <errorMessage>You must include wage info either hourly or yearly</errorMessage>
+</ValidationRule>

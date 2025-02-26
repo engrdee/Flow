@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Housing_History_Compact_Layout</fullName>
+    <fields>Full_Address__c</fields>
+    <fields>City__c</fields>
+    <fields>Months_Rented__c</fields>
+    <fields>Monthly_Rent__c</fields>
+    <fields>Move_In_Date__c</fields>
+    <fields>Move_Out_Date__c</fields>
+    <fields>Current__c</fields>
+    <fields>Contact__c</fields>
+    <label>Housing History Compact Layout</label>
+</CompactLayout>

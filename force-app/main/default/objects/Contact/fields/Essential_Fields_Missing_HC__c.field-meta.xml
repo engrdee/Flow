@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Essential_Fields_Missing_HC__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+  AND( 
+    OR( Active_HC_Service_Case__c, Active_CMH_Service_Case__c),
+    ISNULL(Bedrooms_Wanted__c)
+  ),
+  &apos;Bedrooms Wanted; &apos;, &apos;&apos;
+) &amp;
+
+IF(
+  AND( 
+    OR( Active_HC_Service_Case__c, Active_CMH_Service_Case__c),
+    ISBLANK(TEXT(Missing_Documentation__c))
+  ),
+  &apos;Missing Documentation; &apos;, &apos;&apos;
+) &amp;
+
+IF(
+  AND( 
+    OR( Active_HC_Service_Case__c, Active_CMH_Service_Case__c),
+    ISBLANK(TEXT(Housing_Stability_Status__c))
+  ),
+  &apos;Housing Stability Status; &apos;, &apos;&apos;
+) &amp;
+
+IF(
+  AND( 
+    OR( Active_HC_Service_Case__c, Active_CMH_Service_Case__c),
+    AdminCurrentRentIssue__c
+  ),
+  &apos;Current Rent; &apos;, &apos;&apos;
+) &amp;
+
+IF(
+  AND( 
+    OR( Active_HC_Service_Case__c, Active_CMH_Service_Case__c),
+    AdminDesiredRentIssue__c
+  ),
+  &apos;Desired Rent; &apos;, &apos;&apos;
+) &amp;
+
+IF(
+  AND( 
+    OR( Active_HC_Service_Case__c, Active_CMH_Service_Case__c),
+    ISBLANK(Geographic_Preferences__c)
+  ),
+  &apos;Geographic Preferences; &apos;, &apos;&apos;
+) &amp;
+
+IF(
+  AND( 
+    OR( Active_HC_Service_Case__c, Active_CMH_Service_Case__c),
+    ISBLANK(TEXT(Housing_Type__c))
+  ),
+  &apos;Housing Type; &apos;, &apos;&apos;
+) &amp;
+
+IF(
+  AND( 
+    OR( Active_HC_Service_Case__c, Active_CMH_Service_Case__c),
+    ISBLANK(Reason_to_Move__c)
+  ),
+  &apos;Reason To Move; &apos;, &apos;&apos;
+) &amp;
+
+IF(
+  AND( 
+    OR( Active_HC_Service_Case__c, Active_CMH_Service_Case__c),
+    ISBLANK(TEXT(Full_Time_Student__c))
+  ),
+  &apos;Full Time Student; &apos;, &apos;&apos;
+) &amp;
+
+IF(
+  AND( 
+    OR( Active_HC_Service_Case__c, Active_CMH_Service_Case__c),
+    ISBLANK(TEXT(Credit_Problem__c))
+  ),
+  &apos;Credit Problem; &apos;, &apos;&apos;
+) &amp;
+
+IF(
+  AND( 
+    OR( Active_HC_Service_Case__c, Active_CMH_Service_Case__c),
+    ISBLANK(TEXT(Criminal_History__c))
+  ),
+  &apos;Criminal History; &apos;, &apos;&apos;
+) &amp;
+
+IF(
+  AND( 
+    OR( Active_HC_Service_Case__c, Active_CMH_Service_Case__c),
+    ISBLANK(TEXT(Prior_Eviction__c))
+  ),
+  &apos;Prior Eviction; &apos;, &apos;&apos;
+) &amp;
+
+IF(
+  AND( 
+    OR( Active_HC_Service_Case__c, Active_CMH_Service_Case__c),
+    ISBLANK(TEXT(Recommend_Credit_Report__c))
+  ),
+  &apos;Recommend Credit Report; &apos;, &apos;&apos;
+) &amp;
+
+IF(
+  AND( 
+    OR( Active_HC_Service_Case__c, Active_CMH_Service_Case__c),
+    ISBLANK(TEXT(Recommend_Monthly_Budget__c))
+  ),
+  &apos;Recommend Monthly Budget; &apos;, &apos;&apos;
+) &amp;
+
+IF(
+  AND( 
+    OR( Active_HC_Service_Case__c, Active_CMH_Service_Case__c),
+    ISBLANK(TEXT(Recommend_Rent_Savings_Plan__c))
+  ),
+  &apos;Recommend Rent Savings Plan; &apos;, &apos;&apos;
+)</formula>
+    <label>Essential Fields Missing HC</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

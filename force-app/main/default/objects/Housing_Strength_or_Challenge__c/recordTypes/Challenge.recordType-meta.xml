@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Challenge</fullName>
+    <active>true</active>
+    <label>Challenge</label>
+    <picklistValues>
+        <picklist>Type__c</picklist>
+        <values>
+            <fullName>Household income limits housing search</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Limited geographic parameters</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>May have a negative credit report</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Need ADA unit %2F Will only consider ground floor unit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Need financial assistance for security deposit%2Ffirst month%E2%80%99s rent</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Needs immediate housing solution or emergency rental assistance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prior bankruptcy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prior criminal history</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prior eviction</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

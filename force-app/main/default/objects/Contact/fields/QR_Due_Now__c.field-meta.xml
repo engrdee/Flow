@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>QR_Due_Now__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE(MONTH(TODAY()),
+    2,&apos;Q1-&apos; &amp; TEXT(year(TODAY())),
+    3,&apos;Q1-&apos; &amp; TEXT(year(TODAY())),
+    4,&apos;Q1-&apos; &amp; TEXT(year(TODAY())),
+    5,&apos;Q2-&apos; &amp; TEXT(year(TODAY())),
+    6,&apos;Q2-&apos; &amp; TEXT(year(TODAY())),
+    7,&apos;Q2-&apos; &amp; TEXT(year(TODAY())),
+    8,&apos;Q3-&apos; &amp; TEXT(year(TODAY())),
+    9,&apos;Q3-&apos; &amp; TEXT(year(TODAY())),
+    10,&apos;Q3-&apos; &amp; TEXT(year(TODAY())),
+    11,&apos;Q4-&apos; &amp; TEXT(year(TODAY())),
+    12,&apos;Q4-&apos; &amp; TEXT(year(TODAY())),
+    1,&apos;Q4-&apos; &amp; TEXT(year(TODAY())-1),
+    Null
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>QR Due Now</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

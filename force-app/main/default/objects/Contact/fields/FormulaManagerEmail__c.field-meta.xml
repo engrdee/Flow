@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FormulaManagerEmail__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+  Owner.Profile.Name = &quot;System Administrator&quot;,
+  &quot;UNASSIGNED&quot;,
+  
+  IF(
+    Owner.Profile.Name = &quot;Manager&quot;,
+    Owner.Email,
+    Owner.Manager.Email
+  )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>FormulaManagerEmail</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

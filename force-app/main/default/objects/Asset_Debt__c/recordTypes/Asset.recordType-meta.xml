@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Asset</fullName>
+    <active>true</active>
+    <label>Asset</label>
+    <picklistValues>
+        <picklist>Asset_or_Debt_Type__c</picklist>
+        <values>
+            <fullName>401k</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cal Able account</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Checking</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other asset</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Real Property</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Savings</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Special Needs Trust</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

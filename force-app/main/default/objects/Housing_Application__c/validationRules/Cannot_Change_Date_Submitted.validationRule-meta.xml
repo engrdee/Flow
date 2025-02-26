@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cannot_Change_Date_Submitted</fullName>
+    <active>true</active>
+    <description>Cannot change date submitted after adding a value</description>
+    <errorConditionFormula>IF
+(
+    TODAY() = DATEVALUE(CreatedDate), FALSE,
+
+    IF
+    (
+        ISNULL(PRIORVALUE(Date_Submitted__c)), FALSE,
+
+        IF
+        (
+            ISCHANGED(Date_Submitted__c) = TRUE, TRUE, FALSE
+        )
+    )
+)</errorConditionFormula>
+    <errorDisplayField>Date_Submitted__c</errorDisplayField>
+    <errorMessage>You cannot change the &quot;Date Submitted&quot; after it has been set for more than a day</errorMessage>
+</ValidationRule>

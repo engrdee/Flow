@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Amount_must_be_positive</fullName>
+    <active>true</active>
+    <errorConditionFormula>Amount__c &lt; 0</errorConditionFormula>
+    <errorDisplayField>Amount__c</errorDisplayField>
+    <errorMessage>Enter the total amount as a positive number (i.e. credit card debt of 4,000 would be entered as 4,000... not -4,000)</errorMessage>
+</ValidationRule>

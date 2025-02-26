@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AMI__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE(TEXT(Client_County__c), /* 2024 */
+
+
+  &apos;Monterey&apos;,
+  CASE(Household_Size__c,
+    1, 70300,
+    2, 80300,
+    3, 90350,
+    4, 100400,
+    5, 108450,
+    6, 116450,
+    7, 124500,
+    8, 132550,
+    9, 132550,
+    10, 132550,
+    11, 132550,
+    12, 132550,
+    Null
+  ),
+
+
+  &apos;San Benito&apos;,
+  CASE(Household_Size__c,
+    1, 98150,
+    2, 112150,
+    3, 126200,
+    4, 140200,
+    5, 151400,
+    6, 162650,
+    7, 173850,
+    8, 185050,
+    9, 185050,
+    10, 185050,
+    11, 185050,
+    12, 185050,
+    Null
+  ),
+
+
+  &apos;San Francisco&apos;,
+  CASE(Household_Size__c,
+    1, 122500,
+    2, 140000,
+    3, 157500,
+    4, 175000,
+    5, 189000,
+    6, 203000,
+    7, 217000,
+    8, 231000,
+    9, 231000,
+    10, 231000,
+    11, 231000,
+    12, 231000,
+    Null
+  ),
+
+
+  &apos;San Mateo&apos;,
+  CASE(Household_Size__c,
+    1, 122500,
+    2, 140000,
+    3, 157500,
+    4, 175000,
+    5, 189000,
+    6, 203000,
+    7, 217000,
+    8, 231000,
+    9, 231000,
+    10, 231000,
+    11, 231000,
+    12, 231000,
+    Null
+  ),
+
+
+  &apos;Santa Clara&apos;,
+  CASE(Household_Size__c,
+    1, 126900,
+    2, 145050,
+    3, 163150,
+    4, 181300,
+    5, 195800,
+    6, 210300,
+    7, 224800,
+    8, 239300,
+    9, 239300,
+    10, 239300,
+    11, 239300,
+    12, 239300,
+    Null
+  ),
+
+
+  &apos;Santa Cruz&apos;,
+  CASE(Household_Size__c,
+    1, 92950,
+    2, 106250,
+    3, 119500,
+    4, 132800,
+    5, 143400,
+    6, 154050,
+    7, 164650,
+    8, 175300,
+    9, 175300,
+    10, 175300,
+    11, 175300,
+    12, 175300,
+    Null
+  ),
+  Null
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>AMI</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <type>Currency</type>
+</CustomField>

@@ -1,0 +1,4374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <actionCalls>
+        <name>SendEmail</name>
+        <label>SendEmail</label>
+        <locationX>182</locationX>
+        <locationY>19574</locationY>
+        <actionName>SendBetterEmail</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>AssignLog2</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>HTMLbody</name>
+            <value>
+                <elementReference>v_emailBody</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>orgWideEmailAddressId</name>
+            <value>
+                <elementReference>f_OrgWideEmail_Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>replyEmailAddress</name>
+            <value>
+                <stringValue>noreply@housingchoices.org</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>SendBCCthisOneEmailAddress</name>
+            <value>
+                <elementReference>f_EmailBCC</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>SendCCthisOneEmailAddress</name>
+            <value>
+                <elementReference>f_EmailCC</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderDisplayName</name>
+            <value>
+                <stringValue>NoReply</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>SendTOthisOneEmailAddress</name>
+            <value>
+                <elementReference>f_EmailTo</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>subject</name>
+            <value>
+                <elementReference>f_EmailSubject</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>SendBetterEmail</nameSegment>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <apiVersion>57.0</apiVersion>
+    <assignments>
+        <name>AssetCount</name>
+        <label>AssetCount</label>
+        <locationX>182</locationX>
+        <locationY>5834</locationY>
+        <assignmentItems>
+            <assignToReference>v_CountAsset</assignToReference>
+            <operator>AssignCount</operator>
+            <value>
+                <elementReference>Asset</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>DecideAssetExist</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignAssetRowValues</name>
+        <label>AssignAssetRowValues</label>
+        <locationX>138</locationX>
+        <locationY>6266</locationY>
+        <assignmentItems>
+            <assignToReference>v_AssetTable</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>f_AssetRow</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>LoopAsset</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignAssetSubheader</name>
+        <label>AssignAssetSubheader</label>
+        <locationX>182</locationX>
+        <locationY>6650</locationY>
+        <assignmentItems>
+            <assignToReference>v_emailBody</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <stringValue>&lt;h2&gt;7. Financial Management&lt;/h2&gt;</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>v_emailBody</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <stringValue>&lt;h3&gt;Asset&lt;/h3&gt;</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>v_emailBody</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>v_AssetTable</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Debt</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignAssetTableEnd</name>
+        <label>AssignAssetTableEnd</label>
+        <locationX>50</locationX>
+        <locationY>6458</locationY>
+        <assignmentItems>
+            <assignToReference>v_AssetTable</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>f_tableFooter</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>AssignAssetSubheader</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignAssetValues</name>
+        <label>AssignAssetValues</label>
+        <locationX>50</locationX>
+        <locationY>6050</locationY>
+        <assignmentItems>
+            <assignToReference>v_AssetTable</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>f_AssetTableHeader</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>LoopAsset</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignbackgrounbdInfoRowValues</name>
+        <label>AssignbackgrounbdInfoRowValues</label>
+        <locationX>138</locationX>
+        <locationY>1106</locationY>
+        <assignmentItems>
+            <assignToReference>v_BackgroundInfoTable</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>f_BackgroundInfoRow</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>LoopBackgroundInfo</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignBackgroundInfo</name>
+        <label>AssignBackgroundInfo</label>
+        <locationX>182</locationX>
+        <locationY>674</locationY>
+        <assignmentItems>
+            <assignToReference>v_CountBackgroundInfo</assignToReference>
+            <operator>AssignCount</operator>
+            <value>
+                <elementReference>BankgroundInfo</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>DecideBackgroundInfoExist</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignBackgroundInfoEnd</name>
+        <label>AssignBackgroundInfoEnd</label>
+        <locationX>50</locationX>
+        <locationY>1298</locationY>
+        <assignmentItems>
+            <assignToReference>v_BackgroundInfoTable</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>f_tableFooter</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>AssignBackgroundInfoSubheader</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignBackgroundInfoSubheader</name>
+        <label>AssignBackgroundInfoSubheader</label>
+        <locationX>182</locationX>
+        <locationY>1490</locationY>
+        <assignmentItems>
+            <assignToReference>v_emailBody</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <stringValue>&lt;h2&gt; Part I Housing Assessment &lt;/h2&gt;</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>v_emailBody</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <stringValue>&lt;h2&gt; A. Background Information &lt;/h2&gt;</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>v_emailBody</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <stringValue>&lt;h3&gt;1. Background Info &amp; 2. Current Housing Status&lt;/h3&gt;</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>v_emailBody</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>v_BackgroundInfoTable</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Circle_of_Support</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignBackgroundInfoValues</name>
+        <label>AssignBackgroundInfoValues</label>
+        <locationX>50</locationX>
+        <locationY>890</locationY>
+        <assignmentItems>
+            <assignToReference>v_BackgroundInfoTable</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>f_BackgroundInfoTableHeader</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>LoopBackgroundInfo</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignCircleofSupport</name>
+        <label>AssignCircleofSupport</label>
+        <locationX>182</locationX>
+        <locationY>1706</locationY>
+        <assignmentItems>
+            <assignToReference>v_CicleofSupport</assignToReference>
+            <operator>AssignCount</operator>
+            <value>
+                <elementReference>Circle_of_Support</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>DecideCircleofSupportExist</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignCircleofSupportHeaderAndSubheader</name>
+        <label>AssignCircleofSupportHeaderAndSubheader</label>
+        <locationX>182</locationX>
+        <locationY>2522</locationY>
+        <assignmentItems>
+            <assignToReference>v_emailBody</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <stringValue>&lt;h3&gt;3. Circle of Support&lt;/h3&gt;</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>v_emailBody</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>v_CircleofSupport</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>HousingMembers</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignCircleofSupportRows</name>
+        <label>AssignCircleofSupportRows</label>
+        <locationX>138</locationX>
+        <locationY>2138</locationY>
+        <assignmentItems>
+            <assignToReference>v_CircleofSupport</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>f_CircleofSupportRow</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>LoopCircleofSupport</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignCircleofSupportTableEnd</name>
+        <label>AssignCircleofSupportTableEnd</label>
+        <locationX>50</locationX>
+        <locationY>2330</locationY>
+        <assignmentItems>
+            <assignToReference>v_CircleofSupport</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>f_tableFooter</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>AssignCircleofSupportHeaderAndSubheader</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignCircleofSupportValues</name>
+        <label>AssignCircleofSupportValues</label>
+        <locationX>50</locationX>
+        <locationY>1922</locationY>
+        <assignmentItems>
+            <assignToReference>v_CircleofSupport</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>f_CircleofSupportTableHeader</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>LoopCircleofSupport</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignContactDetailsRowValues</name>
+        <label>AssignContactDetailsRowValues</label>
+        <locationX>138</locationX>
+        <locationY>8330</locationY>
+        <assignmentItems>
+            <assignToReference>v_ContactDetailsTable</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>f_ContactDetailsRow</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>LoopContactDetails</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignContactDetailsSubheader</name>
+        <label>AssignContactDetailsSubheader</label>
+        <locationX>182</locationX>
+        <locationY>8714</locationY>
+        <assignmentItems>
+            <assignToReference>v_emailBody</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <stringValue>&lt;h3&gt;Contact Details&lt;/h3&gt;</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>v_emailBody</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>v_ContactDetailsTable</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>ResidentialHistory</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignContactDetailsTableEnd</name>
+        <label>AssignContactDetailsTableEnd</label>
+        <locationX>50</locationX>
+        <locationY>8522</locationY>
+        <assignmentItems>
+            <assignToReference>v_ContactDetailsTable</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>f_tableFooter</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>AssignContactDetailsSubheader</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignContactDetailsValues</name>
+        <label>AssignContactDetailsValues</label>
+        <locationX>50</locationX>
+        <locationY>8114</locationY>
+        <assignmentItems>
+            <assignToReference>v_ContactDetailsTable</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>f_ContactDetailsTableHeader</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>LoopContactDetails</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignDebtRowValues</name>
+        <label>AssignDebtRowValues</label>
+        <locationX>138</locationX>
+        <locationY>7298</locationY>
+        <assignmentItems>
+            <assignToReference>v_DebtTable</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>f_DebtRow</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>LoopDebt</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignDebtSubheader</name>
+        <label>AssignDebtSubheader</label>
+        <locationX>182</locationX>
+        <locationY>7682</locationY>
+        <assignmentItems>
+            <assignToReference>v_emailBody</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <stringValue>&lt;h3&gt;Debt&lt;/h3&gt;</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>v_emailBody</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>v_DebtTable</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Contact_Details</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignDebtTableEnd</name>
+        <label>AssignDebtTableEnd</label>
+        <locationX>50</locationX>
+        <locationY>7490</locationY>
+        <assignmentItems>
+            <assignToReference>v_DebtTable</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>f_tableFooter</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>AssignDebtSubheader</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignDebtValues</name>
+        <label>AssignDebtValues</label>
+        <locationX>50</locationX>
+        <locationY>7082</locationY>
+        <assignmentItems>
+            <assignToReference>v_DebtTable</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>f_DebtTableHeader</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>LoopDebt</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignEmploymentCount</name>
+        <label>AssignEmploymentCount</label>
+        <locationX>182</locationX>
+        <locationY>4802</locationY>
+        <assignmentItems>
+            <assignToReference>v_CountEmploymentHistory</assignToReference>
+            <operator>AssignCount</operator>
+            <value>
+                <elementReference>EmploymentHistory</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>DecideEmploymentHistoryExist</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignEmploymentHistoryRowValues</name>
+        <label>AssignEmploymentHistoryRowValues</label>
+        <locationX>138</locationX>
+        <locationY>5234</locationY>
+        <assignmentItems>
+            <assignToReference>v_EmploymentTable</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>f_EmplomentHistoryRow</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>LoopEmploymentHistory</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignEmploymentHistoryTableEnd</name>
+        <label>AssignEmploymentHistoryTableEnd</label>
+        <locationX>50</locationX>
+        <locationY>5426</locationY>
+        <assignmentItems>
+            <assignToReference>v_EmploymentTable</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>f_tableFooter</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>AssignEmploymentSubheader</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignEmploymentHistoryValues</name>
+        <label>AssignEmploymentHistoryValues</label>
+        <locationX>50</locationX>
+        <locationY>5018</locationY>
+        <assignmentItems>
+            <assignToReference>v_EmploymentTable</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>f_EmploymentHistoryTableHeader</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>LoopEmploymentHistory</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignEmploymentSubheader</name>
+        <label>AssignEmploymentSubheader</label>
+        <locationX>182</locationX>
+        <locationY>5618</locationY>
+        <assignmentItems>
+            <assignToReference>v_emailBody</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <stringValue>&lt;h3&gt; 6. Employment - blank &quot;Housing Member&quot; means income belongs to client &lt;/h3&gt;</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>v_emailBody</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>v_EmploymentTable</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Asset</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignHosuingMembers</name>
+        <label>AssignHosuingMembers</label>
+        <locationX>50</locationX>
+        <locationY>2954</locationY>
+        <assignmentItems>
+            <assignToReference>v_HousingMembers</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>f_HousingMembersTableHeader</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>LoopMembers</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignHouseholdIncome</name>
+        <label>AssignHouseholdIncome</label>
+        <locationX>182</locationX>
+        <locationY>3770</locationY>
+        <assignmentItems>
+            <assignToReference>v_HouseholdIncome</assignToReference>
+            <operator>AssignCount</operator>
+            <value>
+                <elementReference>HouseHoldIncome</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>DecideHouseholdIncomeExist</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignHouseholdIncomeSubheader</name>
+        <label>AssignHouseholdIncomeSubheader</label>
+        <locationX>182</locationX>
+        <locationY>4586</locationY>
+        <assignmentItems>
+            <assignToReference>v_emailBody</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <stringValue>&lt;h2&gt; 5. Household Income - blank &quot;Housing Member&quot; means income belongs to client &lt;/h2&gt;</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>v_emailBody</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <stringValue>&lt;h3&gt;Contact Details&lt;/h3&gt;</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>v_emailBody</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>v_HouseholdIncomeTable</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>EmploymentHistory</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignHouseholdIncomeTableEnd</name>
+        <label>AssignHouseholdIncomeTableEnd</label>
+        <locationX>50</locationX>
+        <locationY>4394</locationY>
+        <assignmentItems>
+            <assignToReference>v_HouseholdIncomeTable</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>f_tableFooter</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>AssignHouseholdIncomeSubheader</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignHouseholdIncomeValues</name>
+        <label>AssignHouseholdIncomeValues</label>
+        <locationX>50</locationX>
+        <locationY>3986</locationY>
+        <assignmentItems>
+            <assignToReference>v_HouseholdIncomeTable</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>f_HouseholdIncomeTableHeader</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>LoopHouseholdIncome</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignHousingApplicationRowValues</name>
+        <label>AssignHousingApplicationRowValues</label>
+        <locationX>138</locationX>
+        <locationY>13490</locationY>
+        <assignmentItems>
+            <assignToReference>v_HousingApplicationTable</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>f_HousingApplicationsRow</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>LoopHousingApplication</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignHousingApplicationSubheader</name>
+        <label>AssignHousingApplicationSubheader</label>
+        <locationX>182</locationX>
+        <locationY>13874</locationY>
+        <assignmentItems>
+            <assignToReference>v_emailBody</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>v_HousingApplicationTable</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>HousingStrengths</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignHousingApplicationValues</name>
+        <label>AssignHousingApplicationValues</label>
+        <locationX>50</locationX>
+        <locationY>13274</locationY>
+        <assignmentItems>
+            <assignToReference>v_HousingApplicationTable</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>f_HousingApplicationTableHeader</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>LoopHousingApplication</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignHousingChallengeRowValues</name>
+        <label>AssignHousingChallengeRowValues</label>
+        <locationX>138</locationX>
+        <locationY>15554</locationY>
+        <assignmentItems>
+            <assignToReference>v_HousingChallengeTable</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>f_HousingChallengeRows</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>LoopHousingChallenges</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignHousingChallengesSubheader</name>
+        <label>AssignHousingChallengesSubheader</label>
+        <locationX>182</locationX>
+        <locationY>15938</locationY>
+        <assignmentItems>
+            <assignToReference>v_emailBody</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <stringValue>&lt;h3&gt;  Housing Challenges for Parent Contact&lt;/h3&gt;</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>v_emailBody</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>v_HousingChallengeTable</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>HousingSelectionCriteria</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignHousingChallengesValues</name>
+        <label>AssignHousingChallengesValues</label>
+        <locationX>50</locationX>
+        <locationY>15338</locationY>
+        <assignmentItems>
+            <assignToReference>v_HousingChallengeTable</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>f_HousingStrengthChallengesTableHeader</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>LoopHousingChallenges</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignHousinghApplicationTableEnd</name>
+        <label>AssignHousinghApplicationTableEnd</label>
+        <locationX>50</locationX>
+        <locationY>13682</locationY>
+        <assignmentItems>
+            <assignToReference>v_HousingApplicationTable</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>f_tableFooter</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>AssignHousingApplicationSubheader</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignHousinghChallengeTableEnd</name>
+        <label>AssignHousinghChallengeTableEnd</label>
+        <locationX>50</locationX>
+        <locationY>15746</locationY>
+        <assignmentItems>
+            <assignToReference>v_HousingChallengeTable</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>f_tableFooter</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>AssignHousingChallengesSubheader</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignHousinghStrengthTableEnd</name>
+        <label>AssignHousinghStrengthTableEnd</label>
+        <locationX>50</locationX>
+        <locationY>14714</locationY>
+        <assignmentItems>
+            <assignToReference>v_HousingStrengthTable</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>f_tableFooter</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>AssignHousingStrengthSubheader</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignHousingMembers</name>
+        <label>AssignHousingMembers</label>
+        <locationX>182</locationX>
+        <locationY>2738</locationY>
+        <assignmentItems>
+            <assignToReference>v_CountHousingMembers</assignToReference>
+            <operator>AssignCount</operator>
+            <value>
+                <elementReference>HousingMembers</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>DecideHousingMembersExist</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignHousingMembersEnd</name>
+        <label>AssignHousingMembersEnd</label>
+        <locationX>50</locationX>
+        <locationY>3362</locationY>
+        <assignmentItems>
+            <assignToReference>v_HousingMembers</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>f_tableFooter</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>AssignHousingMembersSubheader</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignHousingMembersRowValues</name>
+        <label>AssignHousingMembersRowValues</label>
+        <locationX>138</locationX>
+        <locationY>3170</locationY>
+        <assignmentItems>
+            <assignToReference>v_HousingMembers</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>f_HousingMembersRow</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>LoopMembers</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignHousingMembersSubheader</name>
+        <label>AssignHousingMembersSubheader</label>
+        <locationX>182</locationX>
+        <locationY>3554</locationY>
+        <assignmentItems>
+            <assignToReference>v_emailBody</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <stringValue>&lt;h3&gt;4. Housing Members&lt;/h3&gt;</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>v_emailBody</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>v_HousingMembers</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>HouseHoldIncome</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignHousingNeedsRowValues</name>
+        <label>AssignHousingNeedsRowValues</label>
+        <locationX>138</locationX>
+        <locationY>11426</locationY>
+        <assignmentItems>
+            <assignToReference>v_HousingNeedsTable</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>f_HousingNeedsRow</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>LoopHousingNeeds</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignHousingNeedsSubheader</name>
+        <label>AssignHousingNeedsSubheader</label>
+        <locationX>182</locationX>
+        <locationY>11810</locationY>
+        <assignmentItems>
+            <assignToReference>v_emailBody</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <stringValue>&lt;h2&gt;B. Summary of Housing Needs&lt;/h2&gt;</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>v_emailBody</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <stringValue>&lt;h3&gt;Contact Details&lt;/h3&gt;</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>v_emailBody</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>v_HousingNeedsTable</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Waitlist_Entries</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignHousingNeedsValues</name>
+        <label>AssignHousingNeedsValues</label>
+        <locationX>50</locationX>
+        <locationY>11210</locationY>
+        <assignmentItems>
+            <assignToReference>v_HousingNeedsTable</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>f_HousingNeedsTableHeader</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>LoopHousingNeeds</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignHousingNeedTableEnd</name>
+        <label>AssignHousingNeedTableEnd</label>
+        <locationX>50</locationX>
+        <locationY>11618</locationY>
+        <assignmentItems>
+            <assignToReference>v_HousingNeedsTable</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>f_tableFooter</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>AssignHousingNeedsSubheader</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignHousingSelectionCriteriaRowValues</name>
+        <label>AssignHousingSelectionCriteriaRowValues</label>
+        <locationX>138</locationX>
+        <locationY>16586</locationY>
+        <assignmentItems>
+            <assignToReference>v_HousingSelectionCriteriaTable</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>f_HousingSelectionCriteriaRow</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>LoopHousingSelectionCriteria</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignHousingSelectionCriteriaSubheader</name>
+        <label>AssignHousingSelectionCriteriaSubheader</label>
+        <locationX>182</locationX>
+        <locationY>16970</locationY>
+        <assignmentItems>
+            <assignToReference>v_emailBody</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <stringValue>&lt;h2&gt;Part II Housing Plan&lt;/h2&gt;</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>v_emailBody</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <stringValue>&lt;h3&gt;1. Housing Selection Criteria&lt;/h3&gt;</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>v_emailBody</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>v_HousingSelectionCriteriaTable</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>ShortTermHousingGoals</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignHousingSelectionCriteriaTableEnd</name>
+        <label>AssignHousingSelectionCriteriaTableEnd</label>
+        <locationX>50</locationX>
+        <locationY>16778</locationY>
+        <assignmentItems>
+            <assignToReference>v_HousingSelectionCriteriaTable</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>f_tableFooter</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>AssignHousingSelectionCriteriaSubheader</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignHousingSelectionCriteriaValues</name>
+        <label>AssignHousingSelectionCriteriaValues</label>
+        <locationX>50</locationX>
+        <locationY>16370</locationY>
+        <assignmentItems>
+            <assignToReference>v_HousingSelectionCriteriaTable</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>f_HousingSelectionCriteriaTableHeader</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>LoopHousingSelectionCriteria</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignHousingStrengthRowValues</name>
+        <label>AssignHousingStrengthRowValues</label>
+        <locationX>138</locationX>
+        <locationY>14522</locationY>
+        <assignmentItems>
+            <assignToReference>v_HousingStrengthTable</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>f_HousingStrengthRow</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>LoopHousingStrengths</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignHousingStrengthSubheader</name>
+        <label>AssignHousingStrengthSubheader</label>
+        <locationX>182</locationX>
+        <locationY>14906</locationY>
+        <assignmentItems>
+            <assignToReference>v_emailBody</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <stringValue>&lt;h2&gt;D. Summary of Housing Strengths and Challenges&lt;/h2&gt;</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>v_emailBody</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <stringValue>&lt;h3&gt; Housing Strengths for Parent Contact&lt;/h3&gt;</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>v_emailBody</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>v_HousingStrengthTable</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>HousingChallenges</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignHousingStrengthValues</name>
+        <label>AssignHousingStrengthValues</label>
+        <locationX>50</locationX>
+        <locationY>14306</locationY>
+        <assignmentItems>
+            <assignToReference>v_HousingStrengthTable</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>f_HousingStrengthChallengesTableHeader</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>LoopHousingStrengths</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignLog1</name>
+        <label>AssignLog1</label>
+        <locationX>182</locationX>
+        <locationY>134</locationY>
+        <assignmentItems>
+            <assignToReference>Log.Description__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Flow Initiated</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Log.Error__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>No</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Log.Launch_Type__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>User Initiated	</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Log.Phase__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Initiated</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Log.Primary_Object__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Contact</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Log.Primary_RecordId__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Log.Process_Development_Status__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Building</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Log.Process_Label__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Contact - Emailed Housing Plan Report</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Log.Secondary_Object__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>User</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Log.Type__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Flow</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Log.UserId__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$User.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Log.User_Name__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>{!$User.FirstName} {!$User.LastName}</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Log.Secondary_RecordId__c</assignToReference>
+            <operator>Assign</operator>
+        </assignmentItems>
+        <connector>
+            <targetReference>MakeLog1</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignLog2</name>
+        <label>AssignLog2</label>
+        <locationX>182</locationX>
+        <locationY>19682</locationY>
+        <assignmentItems>
+            <assignToReference>Log.Description__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Housing Plan Summary - Flow Completed</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Log.Error__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>No</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Log.Launch_Type__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Scheduled</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Log.Phase__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Completed</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Log.Primary_Object__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Housing Opportunity</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Log.Primary_RecordId__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>n/a</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Log.Process_Development_Status__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Building</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Log.Process_Label__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Housing Opp Review - Scheduled Summary Program Director</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Log.Secondary_Object__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>n/a</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Log.Type__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Flow</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Log.UserId__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$User.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Log.User_Name__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>{!$User.FirstName} {!$User.LastName}</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Log.Summary__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>v_CountBackgroundInfo</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>MakeLog2</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignLongTermHousingGoalRowValues</name>
+        <label>AssignLongTermHousingGoalRowValues</label>
+        <locationX>138</locationX>
+        <locationY>4202</locationY>
+        <assignmentItems>
+            <assignToReference>v_HouseholdIncomeTable</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>f_HouseholdIncomeRow</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>LoopHouseholdIncome</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignLongTermHousingGoalsRowValues</name>
+        <label>AssignLongTermHousingGoalsRowValues</label>
+        <locationX>138</locationX>
+        <locationY>18650</locationY>
+        <assignmentItems>
+            <assignToReference>v_LongTermHousingGoalsTable</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>f_LongTermHousingGoalsRow</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>LoopLongTermHousingGoals</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignLongTermHousingGoalsSubheader</name>
+        <label>AssignLongTermHousingGoalsSubheader</label>
+        <locationX>182</locationX>
+        <locationY>19034</locationY>
+        <assignmentItems>
+            <assignToReference>v_emailBody</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <stringValue>&lt;h3&gt;3. Long Term Housing Goals&lt;/h3&gt;</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>v_emailBody</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>v_LongTermHousingGoalsTable</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>OrgWideEmailAddress</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignLongTermHousingGoalsTableEnd</name>
+        <label>AssignLongTermHousingGoalsTableEnd</label>
+        <locationX>50</locationX>
+        <locationY>18842</locationY>
+        <assignmentItems>
+            <assignToReference>v_LongTermHousingGoalsTable</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>f_tableFooter</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>AssignLongTermHousingGoalsSubheader</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignLongTermHousingGoalValues</name>
+        <label>AssignLongTermHousingGoalValues</label>
+        <locationX>50</locationX>
+        <locationY>18434</locationY>
+        <assignmentItems>
+            <assignToReference>v_LongTermHousingGoalsTable</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>f_ShortTermLongTermHousingGoalsTableHeader</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>LoopLongTermHousingGoals</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignMainHeader</name>
+        <label>AssignMainHeader</label>
+        <locationX>182</locationX>
+        <locationY>458</locationY>
+        <assignmentItems>
+            <assignToReference>v_emailBody</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>f_MainHeader</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>BankgroundInfo</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignResidentialHistoryRowValues</name>
+        <label>AssignResidentialHistoryRowValues</label>
+        <locationX>138</locationX>
+        <locationY>9362</locationY>
+        <assignmentItems>
+            <assignToReference>v_ResidentialHistoryTable</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>f_ResidentialHistoryRow</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>LoopResidentialHistory</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignResidentialHistorySubheader</name>
+        <label>AssignResidentialHistorySubheader</label>
+        <locationX>182</locationX>
+        <locationY>9746</locationY>
+        <assignmentItems>
+            <assignToReference>v_emailBody</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <stringValue>&lt;h3&gt;8. Residential History&lt;/h3&gt;</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>v_emailBody</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>v_ResidentialHistoryTable</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>TransportationDocumentation</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignResidentialHistoryTableEnd</name>
+        <label>AssignResidentialHistoryTableEnd</label>
+        <locationX>50</locationX>
+        <locationY>9554</locationY>
+        <assignmentItems>
+            <assignToReference>v_ResidentialHistoryTable</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>f_tableFooter</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>AssignResidentialHistorySubheader</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignResidentialHistoryValues</name>
+        <label>AssignResidentialHistoryValues</label>
+        <locationX>50</locationX>
+        <locationY>9146</locationY>
+        <assignmentItems>
+            <assignToReference>v_ResidentialHistoryTable</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>f_ResidentialHistoryTableHeader</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>LoopResidentialHistory</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignShortTermHousingGoalsRowValues</name>
+        <label>AssignShortTermHousingGoalsRowValues</label>
+        <locationX>138</locationX>
+        <locationY>17618</locationY>
+        <assignmentItems>
+            <assignToReference>v_ShortTermHousingGoalsTable</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>f_ShortTermHousingGoalsRow</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>LoopShortTermHousingGoals</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignShortTermHousingGoalsSubheader</name>
+        <label>AssignShortTermHousingGoalsSubheader</label>
+        <locationX>182</locationX>
+        <locationY>18002</locationY>
+        <assignmentItems>
+            <assignToReference>v_emailBody</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <stringValue>&lt;h3&gt;2. Short Term Housing Goals&lt;/h3&gt;</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>v_emailBody</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>v_ShortTermHousingGoalsTable</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>LongTermHousingGoals</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignShortTermHousingGoalsTableEnd</name>
+        <label>AssignShortTermHousingGoalsTableEnd</label>
+        <locationX>50</locationX>
+        <locationY>17810</locationY>
+        <assignmentItems>
+            <assignToReference>v_ShortTermHousingGoalsTable</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>f_tableFooter</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>AssignShortTermHousingGoalsSubheader</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignShortTermHousingGoalValues</name>
+        <label>AssignShortTermHousingGoalValues</label>
+        <locationX>50</locationX>
+        <locationY>17402</locationY>
+        <assignmentItems>
+            <assignToReference>v_ShortTermHousingGoalsTable</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>f_ShortTermLongTermHousingGoalsTableHeader</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>LoopShortTermHousingGoals</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignTransportationDocumentationRowValues</name>
+        <label>AssignTransportationDocumentationRowValues</label>
+        <locationX>138</locationX>
+        <locationY>10394</locationY>
+        <assignmentItems>
+            <assignToReference>v_TransportationDocumentationTable</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>f_TransportationDocumentationRow</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>LoopTransportationDocumentation</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignTransportationDocumentationSubheader</name>
+        <label>AssignTransportationDocumentationSubheader</label>
+        <locationX>182</locationX>
+        <locationY>10778</locationY>
+        <assignmentItems>
+            <assignToReference>v_emailBody</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <stringValue>&lt;h3&gt;9. Transportation &amp; 10. Documentation&lt;/h3&gt;</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>v_emailBody</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>v_TransportationDocumentationTable</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>HousingNeeds</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignTransportationDocumentationTableEnd</name>
+        <label>AssignTransportationDocumentationTableEnd</label>
+        <locationX>50</locationX>
+        <locationY>10586</locationY>
+        <assignmentItems>
+            <assignToReference>v_TransportationDocumentationTable</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>f_tableFooter</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>AssignTransportationDocumentationSubheader</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignTransportationDocumentationValues</name>
+        <label>AssignTransportationDocumentationValues</label>
+        <locationX>50</locationX>
+        <locationY>10178</locationY>
+        <assignmentItems>
+            <assignToReference>v_TransportationDocumentationTable</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>f_TransportationDocumentationTableHeader</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>LoopTransportationDocumentation</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignWaitlistEntriesRowValues</name>
+        <label>AssignWaitlistEntriesRowValues</label>
+        <locationX>138</locationX>
+        <locationY>12458</locationY>
+        <assignmentItems>
+            <assignToReference>v_WaitlistEntriesTable</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>f_WaitlistEntriesRow</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>LoopWaitlistEntries</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignWaitlistEntriesSubheader</name>
+        <label>AssignWaitlistEntriesSubheader</label>
+        <locationX>182</locationX>
+        <locationY>12842</locationY>
+        <assignmentItems>
+            <assignToReference>v_emailBody</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <stringValue>&lt;h2&gt;C. Partner Property Waitlists &amp; Housing Applications &lt;/h2&gt;</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>v_emailBody</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <stringValue>&lt;h3&gt;Waitlist Entries&lt;/h3&gt;</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>v_emailBody</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>v_WaitlistEntriesTable</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>HousingApplications</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignWaitlistEntriesTableEnd</name>
+        <label>AssignWaitlistEntriesTableEnd</label>
+        <locationX>50</locationX>
+        <locationY>12650</locationY>
+        <assignmentItems>
+            <assignToReference>v_WaitlistEntriesTable</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>f_tableFooter</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>AssignWaitlistEntriesSubheader</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>AssignWaitlistEntriesValues</name>
+        <label>AssignWaitlistEntriesValues</label>
+        <locationX>50</locationX>
+        <locationY>12242</locationY>
+        <assignmentItems>
+            <assignToReference>v_WaitlistEntriesTable</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>f_WaitlistEntiresTableHeader</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>LoopWaitlistEntries</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>ContactDetailsCount</name>
+        <label>ContactDetailsCount</label>
+        <locationX>182</locationX>
+        <locationY>7898</locationY>
+        <assignmentItems>
+            <assignToReference>v_CountContactDetails</assignToReference>
+            <operator>AssignCount</operator>
+            <value>
+                <elementReference>Contact_Details</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>DecideContactDetailsExist</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>DebtCount</name>
+        <label>DebtCount</label>
+        <locationX>182</locationX>
+        <locationY>6866</locationY>
+        <assignmentItems>
+            <assignToReference>v_CountDebt</assignToReference>
+            <operator>AssignCount</operator>
+            <value>
+                <elementReference>Debt</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>DecideDebtExist</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>HousingApplicationCount</name>
+        <label>HousingApplicationCount</label>
+        <locationX>182</locationX>
+        <locationY>13058</locationY>
+        <assignmentItems>
+            <assignToReference>v_HousingApplicationCount</assignToReference>
+            <operator>AssignCount</operator>
+            <value>
+                <elementReference>HousingApplications</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>HousingApplicationExist</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>HousingChallengesCount</name>
+        <label>HousingChallengesCount</label>
+        <locationX>182</locationX>
+        <locationY>15122</locationY>
+        <assignmentItems>
+            <assignToReference>v_HousingChallengesCount</assignToReference>
+            <operator>AssignCount</operator>
+            <value>
+                <elementReference>HousingChallenges</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>HousingChallengesExist</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>HousingNeedsCount</name>
+        <label>HousingNeedsCount</label>
+        <locationX>182</locationX>
+        <locationY>10994</locationY>
+        <assignmentItems>
+            <assignToReference>v_HousingNeedsCount</assignToReference>
+            <operator>AssignCount</operator>
+            <value>
+                <elementReference>HousingNeeds</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>HousingNeedsExist</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>HousingSelectionCriteriaCount</name>
+        <label>HousingSelectionCriteriaCount</label>
+        <locationX>182</locationX>
+        <locationY>16154</locationY>
+        <assignmentItems>
+            <assignToReference>v_HousingSelectionCriteriaCount</assignToReference>
+            <operator>AssignCount</operator>
+            <value>
+                <elementReference>HousingSelectionCriteria</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>HousingSelectionCriteriaExist</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>HousingStrengthCount</name>
+        <label>HousingStrengthCount</label>
+        <locationX>182</locationX>
+        <locationY>14090</locationY>
+        <assignmentItems>
+            <assignToReference>v_HousingStrengthCount</assignToReference>
+            <operator>AssignCount</operator>
+            <value>
+                <elementReference>HousingStrengths</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>HousingStrengthExist</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>LongTermHousingGoalsCount</name>
+        <label>LongTermHousingGoalsCount</label>
+        <locationX>182</locationX>
+        <locationY>18218</locationY>
+        <assignmentItems>
+            <assignToReference>v_LongTermHousingGoalsCount</assignToReference>
+            <operator>AssignCount</operator>
+            <value>
+                <elementReference>LongTermHousingGoals</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>LongTermHousingGoalsExist</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>ResidentialHistoryCount</name>
+        <label>ResidentialHistoryCount</label>
+        <locationX>182</locationX>
+        <locationY>8930</locationY>
+        <assignmentItems>
+            <assignToReference>v_CountResidentialHistory</assignToReference>
+            <operator>AssignCount</operator>
+            <value>
+                <elementReference>ResidentialHistory</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>DecideResidentialHistoryExist</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>ShortTermHousingGoalsCount</name>
+        <label>ShortTermHousingGoalsCount</label>
+        <locationX>182</locationX>
+        <locationY>17186</locationY>
+        <assignmentItems>
+            <assignToReference>v_ShortTermHousingGoalsCount</assignToReference>
+            <operator>AssignCount</operator>
+            <value>
+                <elementReference>ShortTermHousingGoals</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>ShortTermHousingGoalsExist</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>TransportationDocumentationCount</name>
+        <label>TransportationDocumentationCount</label>
+        <locationX>182</locationX>
+        <locationY>9962</locationY>
+        <assignmentItems>
+            <assignToReference>v_CountTransportationDocumentation</assignToReference>
+            <operator>AssignCount</operator>
+            <value>
+                <elementReference>TransportationDocumentation</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>TransportationDocumentationExist</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>WaitlistEntriesCount</name>
+        <label>WaitlistEntriesCount</label>
+        <locationX>182</locationX>
+        <locationY>12026</locationY>
+        <assignmentItems>
+            <assignToReference>v_WaitlistEntriesCount</assignToReference>
+            <operator>AssignCount</operator>
+            <value>
+                <elementReference>Waitlist_Entries</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>WaitlistEntriesExist</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>DecideAssetExist</name>
+        <label>DecideAssetExist</label>
+        <locationX>182</locationX>
+        <locationY>5942</locationY>
+        <defaultConnector>
+            <targetReference>AssignAssetSubheader</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No Existe</defaultConnectorLabel>
+        <rules>
+            <name>YesAssetExist</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>v_CountAsset</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>AssignAssetValues</targetReference>
+            </connector>
+            <label>YesAssetExist</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>DecideBackgroundInfoExist</name>
+        <label>DecideBackgroundInfoExist</label>
+        <locationX>182</locationX>
+        <locationY>782</locationY>
+        <defaultConnector>
+            <targetReference>AssignBackgroundInfoSubheader</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No Exist</defaultConnectorLabel>
+        <rules>
+            <name>YesBackgroundInfoExist</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>v_CountBackgroundInfo</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>AssignBackgroundInfoValues</targetReference>
+            </connector>
+            <label>YesBackgroundInfoExist</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>DecideCircleofSupportExist</name>
+        <label>DecideCircleofSupportExist</label>
+        <locationX>182</locationX>
+        <locationY>1814</locationY>
+        <defaultConnector>
+            <targetReference>AssignCircleofSupportHeaderAndSubheader</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No Existe</defaultConnectorLabel>
+        <rules>
+            <name>YesCircleofSupportExist</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>v_CicleofSupport</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>AssignCircleofSupportValues</targetReference>
+            </connector>
+            <label>YesCircleofSupportExist</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>DecideContactDetailsExist</name>
+        <label>DecideContactDetailsExist</label>
+        <locationX>182</locationX>
+        <locationY>8006</locationY>
+        <defaultConnector>
+            <targetReference>AssignContactDetailsSubheader</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No Existe</defaultConnectorLabel>
+        <rules>
+            <name>YesContactDetailsExist</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>v_CountContactDetails</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>AssignContactDetailsValues</targetReference>
+            </connector>
+            <label>YesContactDetailsExist</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>DecideDebtExist</name>
+        <label>DecideDebtExist</label>
+        <locationX>182</locationX>
+        <locationY>6974</locationY>
+        <defaultConnector>
+            <targetReference>AssignDebtSubheader</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No Existe</defaultConnectorLabel>
+        <rules>
+            <name>YesDebtExist</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>v_CountDebt</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>AssignDebtValues</targetReference>
+            </connector>
+            <label>YesDebtExist</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>DecideEmploymentHistoryExist</name>
+        <label>DecideEmploymentHistoryExist</label>
+        <locationX>182</locationX>
+        <locationY>4910</locationY>
+        <defaultConnector>
+            <targetReference>AssignEmploymentSubheader</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No Existe</defaultConnectorLabel>
+        <rules>
+            <name>YesEmploymentHistoryExist</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>v_CountEmploymentHistory</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>AssignEmploymentHistoryValues</targetReference>
+            </connector>
+            <label>YesEmploymentHistoryExist</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>DecideHouseholdIncomeExist</name>
+        <label>DecideHouseholdIncomeExist</label>
+        <locationX>182</locationX>
+        <locationY>3878</locationY>
+        <defaultConnector>
+            <targetReference>AssignHouseholdIncomeSubheader</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No Existe</defaultConnectorLabel>
+        <rules>
+            <name>YesHouseholdIncomeExist</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>v_HouseholdIncome</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>AssignHouseholdIncomeValues</targetReference>
+            </connector>
+            <label>YesHouseholdIncomeExist</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>DecideHousingMembersExist</name>
+        <label>DecideHousingMembersExist</label>
+        <locationX>182</locationX>
+        <locationY>2846</locationY>
+        <defaultConnector>
+            <targetReference>AssignHousingMembersSubheader</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No Existe</defaultConnectorLabel>
+        <rules>
+            <name>YesHousingMembersExist</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>v_CountHousingMembers</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>AssignHosuingMembers</targetReference>
+            </connector>
+            <label>YesHousingMembersExist</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>DecideResidentialHistoryExist</name>
+        <label>DecideResidentialHistoryExist</label>
+        <locationX>182</locationX>
+        <locationY>9038</locationY>
+        <defaultConnector>
+            <targetReference>AssignResidentialHistorySubheader</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No Existe</defaultConnectorLabel>
+        <rules>
+            <name>YesResidentialHistoryExist</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>v_CountResidentialHistory</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>AssignResidentialHistoryValues</targetReference>
+            </connector>
+            <label>YesResidentialHistoryExist</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>HousingApplicationExist</name>
+        <label>HousingApplicationExist</label>
+        <locationX>182</locationX>
+        <locationY>13166</locationY>
+        <defaultConnector>
+            <targetReference>AssignHousingApplicationSubheader</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No Existe</defaultConnectorLabel>
+        <rules>
+            <name>YesHousingApplicationExist</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>v_HousingApplicationCount</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>AssignHousingApplicationValues</targetReference>
+            </connector>
+            <label>YesHousingApplicationExist</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>HousingChallengesExist</name>
+        <label>HousingChallengesExist</label>
+        <locationX>182</locationX>
+        <locationY>15230</locationY>
+        <defaultConnector>
+            <targetReference>AssignHousingChallengesSubheader</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No Existe</defaultConnectorLabel>
+        <rules>
+            <name>YesHousingChallengesExist</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>v_HousingChallengesCount</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>AssignHousingChallengesValues</targetReference>
+            </connector>
+            <label>YesHousingChallengesExist</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>HousingNeedsExist</name>
+        <label>HousingNeedsExist</label>
+        <locationX>182</locationX>
+        <locationY>11102</locationY>
+        <defaultConnector>
+            <targetReference>AssignHousingNeedsSubheader</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No Existe</defaultConnectorLabel>
+        <rules>
+            <name>YesHousingNeedsExist</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>v_HousingNeedsCount</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>AssignHousingNeedsValues</targetReference>
+            </connector>
+            <label>YesHousingNeedsExist</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>HousingSelectionCriteriaExist</name>
+        <label>HousingSelectionCriteriaExist</label>
+        <locationX>182</locationX>
+        <locationY>16262</locationY>
+        <defaultConnector>
+            <targetReference>AssignHousingSelectionCriteriaSubheader</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No Existe</defaultConnectorLabel>
+        <rules>
+            <name>YesHousingSelectionCriteriaExist</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>v_HousingSelectionCriteriaCount</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>AssignHousingSelectionCriteriaValues</targetReference>
+            </connector>
+            <label>YesHousingSelectionCriteriaExist</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>HousingStrengthExist</name>
+        <label>HousingStrengthExist</label>
+        <locationX>182</locationX>
+        <locationY>14198</locationY>
+        <defaultConnector>
+            <targetReference>AssignHousingStrengthSubheader</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No Existe</defaultConnectorLabel>
+        <rules>
+            <name>YesHousingStrengthExist</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>v_HousingStrengthCount</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>AssignHousingStrengthValues</targetReference>
+            </connector>
+            <label>YesHousingStrengthExist</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>LongTermHousingGoalsExist</name>
+        <label>LongTermHousingGoalsExist</label>
+        <locationX>182</locationX>
+        <locationY>18326</locationY>
+        <defaultConnector>
+            <targetReference>AssignLongTermHousingGoalsSubheader</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No Existe</defaultConnectorLabel>
+        <rules>
+            <name>YesLongTermHousingGoalsExist</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>v_LongTermHousingGoalsCount</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>AssignLongTermHousingGoalValues</targetReference>
+            </connector>
+            <label>YesLongTermHousingGoalsExist</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>ShortTermHousingGoalsExist</name>
+        <label>ShortTermHousingGoalsExist</label>
+        <locationX>182</locationX>
+        <locationY>17294</locationY>
+        <defaultConnector>
+            <targetReference>AssignShortTermHousingGoalsSubheader</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No Existe</defaultConnectorLabel>
+        <rules>
+            <name>YesShortTermHousingGoalsExist</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>v_ShortTermHousingGoalsCount</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>AssignShortTermHousingGoalValues</targetReference>
+            </connector>
+            <label>YesShortTermHousingGoalsExist</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>TransportationDocumentationExist</name>
+        <label>TransportationDocumentationExist</label>
+        <locationX>182</locationX>
+        <locationY>10070</locationY>
+        <defaultConnector>
+            <targetReference>AssignTransportationDocumentationSubheader</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No Existe</defaultConnectorLabel>
+        <rules>
+            <name>YesTransportationDocumentationExist</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>v_CountTransportationDocumentation</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>AssignTransportationDocumentationValues</targetReference>
+            </connector>
+            <label>YesTransportationDocumentationExist</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>WaitlistEntriesExist</name>
+        <label>WaitlistEntriesExist</label>
+        <locationX>182</locationX>
+        <locationY>12134</locationY>
+        <defaultConnector>
+            <targetReference>AssignWaitlistEntriesSubheader</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No Existe</defaultConnectorLabel>
+        <rules>
+            <name>YesWaitlistEntriesExist</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>v_WaitlistEntriesCount</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>AssignWaitlistEntriesValues</targetReference>
+            </connector>
+            <label>YesWaitlistEntriesExist</label>
+        </rules>
+    </decisions>
+    <dynamicChoiceSets>
+        <name>pck_Bedrooms</name>
+        <dataType>Multipicklist</dataType>
+        <displayField xsi:nil="true"/>
+        <object xsi:nil="true"/>
+        <picklistField>Bedrooms_Wanted__c</picklistField>
+        <picklistObject>Contact</picklistObject>
+    </dynamicChoiceSets>
+    <dynamicChoiceSets>
+        <name>rch_RcUsers</name>
+        <dataType>String</dataType>
+        <displayField>Full_Name__c</displayField>
+        <filterLogic>1 AND (2 OR 3)</filterLogic>
+        <filters>
+            <field>IsActive</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>User_Profile_Name__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>RC</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>User_Profile_Name__c</field>
+            <operator>Contains</operator>
+            <value>
+                <stringValue>RC Mgr</stringValue>
+            </value>
+        </filters>
+        <object>User</object>
+        <outputAssignments>
+            <assignToReference>v_SelectedRcUserId</assignToReference>
+            <field>Id</field>
+        </outputAssignments>
+        <valueField>Full_Name__c</valueField>
+    </dynamicChoiceSets>
+    <environments>Default</environments>
+    <formulas>
+        <name>DebtTableHeader</name>
+        <dataType>String</dataType>
+        <expression>{!f_headerStyle} &amp;
+&apos;  &lt;tr bgcolor=&quot;&apos; &amp; {!f_htmlBgHeaderColor} &amp; &apos;&quot; style=&quot;color: white;&quot;&gt;&apos; &amp; BR() &amp;
+&quot;    &lt;th&gt;&lt;strong&gt;Debt Name&lt;/strong&gt;&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;Debt Type&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;Amount&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;  &lt;/tr&gt;&quot; &amp; BR()</expression>
+    </formulas>
+    <formulas>
+        <name>f_AssetRow</name>
+        <dataType>String</dataType>
+        <expression>&quot;  &lt;tr&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;td&gt;&quot; &amp; {!LoopAsset.Name}&amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* Asset Name */
+&quot;    &lt;td&gt;&quot; &amp; TEXT({!LoopAsset.Asset_or_Debt_Type__c}) &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* Asset Type (Picklist) */
+&quot;    &lt;td&gt;&quot; &amp; TEXT({!LoopAsset.Amount__c}) &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* Amount */
+&quot;  &lt;/tr&gt;&quot; &amp; BR()</expression>
+    </formulas>
+    <formulas>
+        <name>f_AssetTableHeader</name>
+        <dataType>String</dataType>
+        <expression>{!f_headerStyle} &amp;
+&apos;  &lt;tr bgcolor=&quot;&apos; &amp; {!f_htmlBgHeaderColor} &amp; &apos;&quot; style=&quot;color: white;&quot;&gt;&apos; &amp; BR() &amp;
+&quot;    &lt;th&gt;&lt;strong&gt;*Asset Name&lt;/strong&gt;&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;Asset Type&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;Amount&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;  &lt;/tr&gt;&quot; &amp; BR()</expression>
+    </formulas>
+    <formulas>
+        <name>f_BackgroundInfoRow</name>
+        <dataType>String</dataType>
+        <expression>&apos;  &lt;tr&gt;&apos; &amp; BR() &amp;
+&apos;    &lt;td valign=&quot;top&quot; style=&quot;padding:10px;&quot;&gt;&apos; &amp; BR() &amp;
+&apos;      &lt;strong&gt;Name:&lt;/strong&gt; &apos; &amp; {!LoopBackgroundInfo.Full_Name__c} &amp; &apos;&lt;br/&gt;&apos; &amp; BR() &amp;
+&apos;      &lt;strong&gt;Phone:&lt;/strong&gt; &apos; &amp; {!LoopBackgroundInfo.Client_Phone__c} &amp; &apos;&lt;br/&gt;&apos; &amp; BR() &amp;
+&apos;      &lt;strong&gt;Email:&lt;/strong&gt; &apos; &amp; {!LoopBackgroundInfo.Client_Email__c} &amp; &apos;&lt;br/&gt;&apos; &amp; BR() &amp;
+&apos;      &lt;strong&gt;DOB:&lt;/strong&gt; &apos; &amp; TEXT({!LoopBackgroundInfo.Birthdate}) &amp; &apos;&lt;br/&gt;&apos; &amp; BR() &amp;
+&apos;      &lt;strong&gt;Age:&lt;/strong&gt; &apos; &amp; TEXT({!LoopBackgroundInfo.Age__c}) &amp; &apos;&lt;br/&gt;&apos; &amp; BR() &amp;
+&apos;      &lt;strong&gt;UCI:&lt;/strong&gt; &apos; &amp; {!LoopBackgroundInfo.UCI__c} &amp; &apos;&lt;br/&gt;&apos; &amp; BR() &amp;
+&apos;      &lt;strong&gt;Gender:&lt;/strong&gt; &apos; &amp; TEXT({!LoopBackgroundInfo.Gender__c}) &amp; &apos;&lt;br/&gt;&apos; &amp; BR() &amp;
+&apos;      &lt;strong&gt;Preferred Language:&lt;/strong&gt; &apos; &amp; TEXT({!LoopBackgroundInfo.Language__c}) &amp; &apos;&lt;br/&gt;&apos; &amp; BR() &amp;
+&apos;      &lt;strong&gt;Conserved:&lt;/strong&gt; &apos; &amp; 
+        IF(ISPICKVAL({!LoopBackgroundInfo.Conserved__c}, &quot;Yes&quot;), &quot;Yes&quot;, 
+        IF(ISPICKVAL({!LoopBackgroundInfo.Conserved__c}, &quot;No&quot;), &quot;No&quot;, &quot;None&quot;)) &amp; BR() &amp;
+&apos;    &lt;/td&gt;&apos; &amp; BR() &amp;
+
+&apos;    &lt;td valign=&quot;top&quot; style=&quot;padding:10px;&quot;&gt;&apos; &amp; BR() &amp;
+&apos;      &lt;strong&gt;Current Address:&lt;/strong&gt; &apos; &amp; {!LoopBackgroundInfo.npsp__Current_Address__c} &amp; &apos;&lt;br/&gt;&apos; &amp; BR() &amp;
+&apos;      &lt;strong&gt;County:&lt;/strong&gt; &apos; &amp; TEXT({!LoopBackgroundInfo.Client_County__c}) &amp; &apos;&lt;br/&gt;&apos; &amp; BR() &amp;
+&apos;      &lt;strong&gt;Housing Type:&lt;/strong&gt; &apos; &amp; TEXT({!LoopBackgroundInfo.Housing_Type__c}) &amp; &apos;&lt;br/&gt;&apos; &amp; BR() &amp;
+&apos;      &lt;strong&gt;Resided Here Since:&lt;/strong&gt; &apos; &amp; TEXT({!LoopBackgroundInfo.Move_in_Date__c}) &amp; &apos;&lt;br/&gt;&apos; &amp; BR() &amp;
+&apos;      &lt;strong&gt;Housing Stability Status:&lt;/strong&gt; &apos; &amp; TEXT({!LoopBackgroundInfo.Housing_Stability_Status__c}) &amp; &apos;&lt;br/&gt;&apos; &amp; BR() &amp;
+&apos;      &lt;strong&gt;Reason to Move:&lt;/strong&gt; &apos; &amp; {!LoopBackgroundInfo.Reason_to_Move__c} &amp; &apos;&lt;br/&gt;&apos; &amp; BR() &amp;
+&apos;      &lt;strong&gt;Section 8:&lt;/strong&gt; &apos; &amp; IF(ISPICKVAL({!LoopBackgroundInfo.Has_Section_8_Voucher__c}, &quot;Yes&quot;), &quot;Yes&quot;, &quot;No&quot;) &amp; BR() &amp;
+&apos;    &lt;/td&gt;&apos; &amp; BR() &amp;
+&apos;  &lt;/tr&gt;&apos; &amp; BR()</expression>
+    </formulas>
+    <formulas>
+        <name>f_BackgroundInfoTableHeader</name>
+        <dataType>String</dataType>
+        <expression>{!f_headerStyle} &amp; 
+&apos;&lt;table border=&quot;1&quot; cellpadding=&quot;5&quot; cellspacing=&quot;0&quot; width=&quot;100%&quot; style=&quot;border-collapse: collapse;&quot;&gt;&apos; &amp; BR() &amp;&apos;  &lt;tr&gt;&apos; &amp; BR() &amp;
+&apos;    &lt;th width=&quot;50%&quot; bgcolor=&quot;&apos; &amp; {!f_htmlBgHeaderColor} &amp; &apos;&quot; style=&quot;color: white; text-align:left;&quot;&gt;1. General Client Information&lt;/th&gt;&apos; &amp; BR() &amp;
+&apos;    &lt;th width=&quot;50%&quot; bgcolor=&quot;&apos; &amp; {!f_htmlBgHeaderColor} &amp; &apos;&quot; style=&quot;color: white; text-align:left;&quot;&gt;2. Current Housing Status&lt;/th&gt;&apos; &amp; BR() &amp;
+&apos;  &lt;/tr&gt;&apos;</expression>
+    </formulas>
+    <formulas>
+        <name>f_CircleofSupportRow</name>
+        <dataType>String</dataType>
+        <expression>&quot;&lt;tr&gt;&quot; &amp; BR() &amp;
+&quot;  &lt;td&gt;&lt;b&gt;Primary Contact Type:&lt;/b&gt; &quot; &amp; TEXT({!LoopCircleofSupport.Primary_Contact_List__c}) &amp; &quot;&lt;/td&gt;&quot; &amp;
+&quot;  &lt;td&gt;&lt;b&gt;Emergency Contact Type:&lt;/b&gt; &quot; &amp; TEXT({!LoopCircleofSupport.Emergency_Contact__c}) &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp;
+&quot;&lt;/tr&gt;&quot; &amp; BR() &amp;
+&quot;&lt;tr&gt;&quot; &amp;
+&quot;  &lt;td&gt;&lt;b&gt;Primary Contact Name:&lt;/b&gt; &quot; &amp; {!LoopCircleofSupport.Primary_Contact_Name__c} &amp; &quot;&lt;/td&gt;&quot; &amp;
+&quot;  &lt;td&gt;&lt;b&gt;Emergency Contact Name:&lt;/b&gt; &quot; &amp; {!LoopCircleofSupport.Emergency_Contact_Name__c} &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp;
+&quot;&lt;/tr&gt;&quot; &amp; BR() &amp;
+&quot;&lt;tr&gt;&quot; &amp;
+&quot;  &lt;td colspan=&apos;2&apos;&gt;&lt;b&gt;Family Support Contact Name:&lt;/b&gt; &quot; &amp; {!LoopCircleofSupport.Family_Contact_Name__c} &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp;
+&quot;&lt;/tr&gt;&quot; &amp; BR() &amp;
+&quot;&lt;tr&gt;&quot; &amp;
+&quot;  &lt;td&gt;&lt;b&gt;Family Support Contact Relationship:&lt;/b&gt; &quot; &amp; TEXT({!LoopCircleofSupport.Family_Relationship__c}) &amp; &quot;&lt;/td&gt;&quot; &amp;
+&quot;  &lt;td&gt;&lt;b&gt;Paid Support Staff Name:&lt;/b&gt; &quot; &amp; {!LoopCircleofSupport.Paid_Support_Name__c} &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp;
+&quot;&lt;/tr&gt;&quot; &amp; BR() &amp;
+&quot;&lt;tr&gt;&quot; &amp;
+&quot;  &lt;td&gt;&lt;b&gt;Family Support Contact Phone:&lt;/b&gt; &quot; &amp; {!LoopCircleofSupport.Family_Contact_Phone__c} &amp; &quot;&lt;/td&gt;&quot; &amp;
+&quot;  &lt;td&gt;&lt;b&gt;Paid Support Agency:&lt;/b&gt; &quot; &amp; {!LoopCircleofSupport.Paid_Support_Agency__c} &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp;
+&quot;&lt;/tr&gt;&quot; &amp; BR() &amp;
+&quot;&lt;tr&gt;&quot; &amp;
+&quot;  &lt;td&gt;&lt;b&gt;Family Support Contact Email:&lt;/b&gt; &quot; &amp; {!LoopCircleofSupport.Family_Contact_Email__c} &amp; &quot;&lt;/td&gt;&quot; &amp;
+&quot;  &lt;td&gt;&lt;b&gt;Paid Support Type:&lt;/b&gt; &quot; &amp; TEXT({!LoopCircleofSupport.Paid_Support_Type__c}) &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp;
+&quot;&lt;/tr&gt;&quot; &amp; BR() &amp;
+&quot;&lt;tr&gt;&quot; &amp;
+&quot;  &lt;td&gt;&lt;b&gt;Regional Center Staff Name:&lt;/b&gt; &quot; &amp; {!LoopCircleofSupport.Service_Coordinator_Name__c} &amp; &quot;&lt;/td&gt;&quot; &amp;
+&quot;  &lt;td&gt;&lt;b&gt;Paid Support Phone:&lt;/b&gt; &quot; &amp; {!LoopCircleofSupport.Paid_Support_Phone__c} &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp;
+&quot;&lt;/tr&gt;&quot; &amp; BR() &amp;
+&quot;&lt;tr&gt;&quot; &amp;
+&quot;  &lt;td&gt;&lt;/td&gt;&quot; &amp;
+&quot;  &lt;td&gt;&lt;b&gt;Paid Support Email:&lt;/b&gt; &quot; &amp; {!LoopCircleofSupport.Paid_Support_Email__c} &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp;
+&quot;&lt;/tr&gt;&quot; &amp; BR() &amp;
+&quot;&lt;tr&gt;&quot; &amp;
+&quot;  &lt;td colspan=&apos;2&apos;&gt;&lt;b&gt;Client is Conserved:&lt;/b&gt; &quot; &amp; IF(TEXT({!LoopCircleofSupport.Conserved__c}) = &quot;Yes&quot;, &quot;Yes&quot;, &quot;No&quot;) &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp;
+&quot;&lt;/tr&gt;&quot;</expression>
+    </formulas>
+    <formulas>
+        <name>f_CircleofSupportTableHeader</name>
+        <dataType>String</dataType>
+        <expression>{!f_headerStyle} &amp; 
+&apos;&lt;table border=&quot;1&quot; cellpadding=&quot;5&quot; cellspacing=&quot;0&quot; width=&quot;100%&quot; style=&quot;border-collapse: collapse;&quot;&gt;&apos; &amp; BR() &amp;
+&apos;  &lt;tr&gt;&apos; &amp; BR() &amp;
+&apos;  &lt;/tr&gt;&apos;</expression>
+    </formulas>
+    <formulas>
+        <name>f_ClientWill</name>
+        <dataType>String</dataType>
+        <expression>&quot;&lt;p&gt;(1) Have a weekly check-in with either client and household members to learn of any questions or problems they are having at the property. &lt;/p&gt;&quot; &amp; BR() &amp;
+
+&quot;&lt;p&gt;(2) Bring questions, problems and concerns about the property or the lease to the attention of the Resident Coordinator and work cooperatively with the Resident Coordinator, so that the Resident Coordinator can provide assistance to help the family achieve their housing goal. &lt;/p&gt;&quot; &amp; BR()</expression>
+    </formulas>
+    <formulas>
+        <name>f_ContactDetailsRow</name>
+        <dataType>String</dataType>
+        <expression>&quot;  &lt;tr&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;td&gt;&quot; &amp; TEXT({!LoopContactDetails.Has_Lease_Co_signer__c}) &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* Has Lease Co-signer (Picklist) */
+&quot;    &lt;td&gt;&quot; &amp; TEXT({!LoopContactDetails.Lease_Co_signer__c}) &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* Lease Co-signer (Picklist) */
+&quot;    &lt;td&gt;&quot; &amp; {!LoopContactDetails.Rep_Payee_Name__c} &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* Rep Payee Name */
+&quot;    &lt;td&gt;&quot; &amp; {!LoopContactDetails.Conservator_Name__c} &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* Conservator Name */
+&quot;    &lt;td&gt;&quot; &amp; TEXT({!LoopContactDetails.Recommend_Credit_Report__c}) &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* Recommend Credit Report (Picklist) */
+&quot;    &lt;td&gt;&quot; &amp; TEXT({!LoopContactDetails.Recommend_Monthly_Budget__c}) &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* Recommend Monthly Budget (Picklist) */
+&quot;  &lt;/tr&gt;&quot; &amp; BR()</expression>
+    </formulas>
+    <formulas>
+        <name>f_ContactDetailsTableHeader</name>
+        <dataType>String</dataType>
+        <expression>{!f_headerStyle} &amp;
+&apos;  &lt;tr bgcolor=&quot;&apos; &amp; {!f_htmlBgHeaderColor} &amp; &apos;&quot; style=&quot;color: white;&quot;&gt;&apos; &amp; BR() &amp;
+&quot;    &lt;th&gt;&lt;strong&gt;Has Lease Co-signer&lt;/strong&gt;&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;Lease Co-signer&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;Rep Payee Name&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;Conservator Name&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;Recommend Credit Report&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;Recommend Monthly Budget&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;  &lt;/tr&gt;&quot; &amp; BR()</expression>
+    </formulas>
+    <formulas>
+        <name>f_DebtRow</name>
+        <dataType>String</dataType>
+        <expression>&quot;  &lt;tr&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;td&gt;&quot; &amp; {!LoopDebt.Name} &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* Debt Name */
+&quot;    &lt;td&gt;&quot; &amp; TEXT({!LoopAsset.Asset_or_Debt_Type__c}) &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* Debt Type (Picklist) */
+&quot;    &lt;td&gt;&quot; &amp; TEXT({!LoopDebt.Amount__c}) &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* Amount */
+&quot;  &lt;/tr&gt;&quot; &amp; BR()</expression>
+    </formulas>
+    <formulas>
+        <name>f_DebtTableHeader</name>
+        <dataType>String</dataType>
+        <expression>{!f_headerStyle} &amp;
+&apos;  &lt;tr bgcolor=&quot;&apos; &amp; {!f_htmlBgHeaderColor} &amp; &apos;&quot; style=&quot;color: white;&quot;&gt;&apos; &amp; BR() &amp;
+&quot;    &lt;th&gt;&lt;strong&gt;*Debt Name&lt;/strong&gt;&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;Debt Type&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;Amount&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;  &lt;/tr&gt;&quot; &amp; BR()</expression>
+    </formulas>
+    <formulas>
+        <name>f_EmailBCC</name>
+        <dataType>String</dataType>
+        <expression>{!PrimarySystemAdmin.Email}</expression>
+    </formulas>
+    <formulas>
+        <name>f_EmailCC</name>
+        <dataType>String</dataType>
+        <expression>IF(
+  ISBLANK( {!ManagerUser.Email} ),
+  {!PrimarySystemAdmin.Email},
+  {!ManagerUser.Email}
+)</expression>
+    </formulas>
+    <formulas>
+        <name>f_EmailSubject</name>
+        <dataType>String</dataType>
+        <expression>&quot;[Housing Plan] &quot; &amp; {!Contact.Full_Name__c} &amp; &quot; &quot; &amp;
+TEXT(MONTH( TODAY() )) &amp; &quot;/&quot; &amp;
+TEXT(DAY( TODAY() )) &amp; &quot;/&quot; &amp;
+TEXT(YEAR( TODAY() ))</expression>
+    </formulas>
+    <formulas>
+        <name>f_EmailTo</name>
+        <dataType>String</dataType>
+        <expression>{!$User.Email}
+/*  PrimarySystemAdmin.Email  */</expression>
+    </formulas>
+    <formulas>
+        <name>f_EmplomentHistoryRow</name>
+        <dataType>String</dataType>
+        <expression>
+&quot;        &lt;tr&gt;&quot; &amp; BR() &amp;
+&quot;            &lt;td&gt;&quot; &amp; {!LoopEmploymentHistory.Name} &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp;
+&quot;            &lt;td&gt;&quot; &amp; {!LoopEmploymentHistory.Housing_Member__c} &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp;
+&quot;            &lt;td&gt;&quot; &amp; {!LoopEmploymentHistory.Job_Title__c} &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;td&gt;&quot; &amp; IF({!LoopEmploymentHistory.Current__c}, &quot;Yes&quot;, &quot;No&quot;) &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* Current */
+&quot;            &lt;td&gt;&quot; &amp; TEXT({!LoopEmploymentHistory.Monthly_Income__c}) &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp;
+&quot;            &lt;td&gt;&quot; &amp; TEXT({!LoopEmploymentHistory.Employment_Start_Date__c}) &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp;
+&quot;            &lt;td&gt;&quot; &amp; TEXT({!LoopEmploymentHistory.Employment_End_Date__c}) &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp;
+&quot;            &lt;td&gt;&quot; &amp; {!LoopEmploymentHistory.Verifier_Name__c} &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp;
+&quot;            &lt;td&gt;&quot; &amp; {!LoopEmploymentHistory.Verifier_Email__c} &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp;
+&quot;            &lt;td&gt;&quot; &amp; {!LoopEmploymentHistory.Verifier_Phone__c} &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp;
+&quot;        &lt;/tr&gt;&quot; &amp; BR()</expression>
+    </formulas>
+    <formulas>
+        <name>f_EmploymentHistoryTableHeader</name>
+        <dataType>String</dataType>
+        <expression>{!f_headerStyle} &amp;
+&apos;  &lt;tr bgcolor=&quot;&apos; &amp; {!f_htmlBgHeaderColor} &amp; &apos;&quot; style=&quot;color: white;&quot;&gt;&apos; &amp; BR() &amp;
+&quot;    &lt;th&gt;&lt;strong&gt;Previous Employer&lt;/strong&gt;&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;House Member&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;Job Title&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;Current&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;Monthly Income&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;Employment Start Date&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;Employment End Date&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;Verifier Name&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;Verifier Email&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;Verifier Phone&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;  &lt;/tr&gt;&quot; &amp; BR()</expression>
+    </formulas>
+    <formulas>
+        <name>f_headerStyle</name>
+        <dataType>String</dataType>
+        <expression>&apos;&lt;table cellpadding=&quot;4&quot; cellspacing=&quot;0&quot; width=&quot;800&quot; border=&quot;2&quot; style=&quot;margin-top: 20px; margin-bottom: 40px;&quot;&gt;&apos; &amp; BR()</expression>
+    </formulas>
+    <formulas>
+        <name>f_HouseholdIncomeRow</name>
+        <dataType>String</dataType>
+        <expression>&quot;  &lt;tr&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;td&gt;&quot; &amp; {!LoopHouseholdIncome.Name} &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* HH Voucher Income Monthly */
+&quot;    &lt;td&gt;&quot; &amp; TEXT({!LoopHouseholdIncome.HH_Income_Monthly__c}) &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* HH Income Monthly */
+&quot;    &lt;td&gt;&quot; &amp; TEXT({!LoopHouseholdIncome.HH_Income_Annual__c}) &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* HH Income Annual */
+&quot;    &lt;td&gt;&quot; &amp; TEXT({!LoopHouseholdIncome.AMI__c}) &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* AMI */
+&quot;    &lt;td&gt;&quot; &amp; TEXT({!LoopHouseholdIncome.Percent_AMI__c}) &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* Percent AMI */
+&quot;  &lt;/tr&gt;&quot; &amp; BR()</expression>
+    </formulas>
+    <formulas>
+        <name>f_HouseholdIncomeTableHeader</name>
+        <dataType>String</dataType>
+        <expression>{!f_headerStyle} &amp;
+&apos;  &lt;tr bgcolor=&quot;&apos; &amp; {!f_htmlBgHeaderColor} &amp; &apos;&quot; style=&quot;color: white;&quot;&gt;&apos; &amp; BR() &amp;
+&quot;    &lt;th&gt;&lt;strong&gt;HH Voucher Income Monthly&lt;/strong&gt;&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;HH Income Monthly&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;HH Income Annual&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;AMI&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;Percent AMI&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;  &lt;/tr&gt;&quot; &amp; BR()</expression>
+    </formulas>
+    <formulas>
+        <name>f_HousingApplicationsRow</name>
+        <dataType>String</dataType>
+        <expression>&quot;&lt;tr&gt;&quot; &amp; 
+&quot;    &lt;td&gt;&quot; &amp; {!LoopHousingApplication.Property__c} &amp; &quot;&lt;/td&gt;&quot; &amp; 
+&quot;    &lt;td&gt;&quot; &amp; {!LoopHousingApplication.City__c}&amp; &quot;&lt;/td&gt;&quot; &amp; 
+&quot;    &lt;td&gt;&quot; &amp; TEXT({!LoopHousingApplication.Date_Submitted__c}) &amp; &quot;&lt;/td&gt;&quot; &amp; 
+&quot;&lt;/tr&gt;&quot;</expression>
+    </formulas>
+    <formulas>
+        <name>f_HousingApplicationTableHeader</name>
+        <dataType>String</dataType>
+        <expression>{!f_headerStyle} &amp;
+&apos;  &lt;tr bgcolor=&quot;&apos; &amp; {!f_htmlBgHeaderColor} &amp; &apos;&quot; style=&quot;color: white;&quot;&gt;&apos; &amp; BR() &amp;
+&quot;    &lt;th&gt;&lt;strong&gt;Housing Application Property&lt;/strong&gt;&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;City&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;Date Submitted&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;  &lt;/tr&gt;&quot; &amp; BR()</expression>
+    </formulas>
+    <formulas>
+        <name>f_HousingChallengeRows</name>
+        <dataType>String</dataType>
+        <expression>&quot;  &lt;tr&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;td&gt;&quot; &amp; {!LoopHousingChallenges.Name} &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* NAME */
+&quot;    &lt;td&gt;&quot; &amp; TEXT( {!LoopHousingChallenges.Type__c} ) &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* Challenge Type */
+&quot;    &lt;td&gt;&quot; &amp; {!LoopHousingChallenges.Description__c} &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* Challenge Description */
+&quot;  &lt;/tr&gt;&quot; &amp; BR()</expression>
+    </formulas>
+    <formulas>
+        <name>f_HousingMembersRow</name>
+        <dataType>String</dataType>
+        <expression>&quot;  &lt;tr&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;td&gt;&quot; &amp; {!LoopMembers.Name} &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* NAME */
+&quot;    &lt;td&gt;&quot; &amp; TEXT( {!LoopMembers.Relation_to_Client__c} ) &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* RELATION */
+&quot;    &lt;td&gt;&quot; &amp; IF({!LoopMembers.Head_Of_Household__c}=TRUE,&quot;Yes&quot;,&quot;&quot;) &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* HEAD OF HOUSEHOLD */
+&quot;    &lt;td&gt;&quot; &amp; TEXT( {!LoopMembers.Birthday__c} ) &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* BIRTHDAY */
+&quot;    &lt;td&gt;&quot; &amp; TEXT( {!LoopMembers.Age__c} ) &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* AGE */
+&quot;    &lt;td&gt;&quot; &amp; IF({!LoopMembers.Service_Animal__c}=TRUE,&quot;Yes&quot;,&quot;&quot;) &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* SERVICE ANIMAL */
+&quot;    &lt;td&gt;&quot; &amp; IF({!LoopMembers.Pet_Non_Service_Animal__c}=TRUE,&quot;Yes&quot;,&quot;&quot;) &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* PET */
+&quot;    &lt;td&gt;&quot; &amp; IF({!LoopMembers.Prior_Eviction__c}=TRUE,&quot;Yes&quot;,&quot;&quot;) &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* EVICTION */
+&quot;    &lt;td&gt;&quot; &amp; IF({!LoopMembers.Bad_Credit__c}=TRUE,&quot;Yes&quot;,&quot;&quot;) &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* BAD CREDIT */
+&quot;    &lt;td&gt;&quot; &amp; IF({!LoopMembers.Full_Time_Student__c}=TRUE,&quot;Yes&quot;,&quot;&quot;) &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* STUDENT */
+&quot;    &lt;td&gt;&quot; &amp; IF({!LoopMembers.Limited_Mobility__c}=TRUE,&quot;Yes&quot;,&quot;&quot;) &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* LIMITED MOBILITY */
+&quot;    &lt;td&gt;&quot; &amp; IF({!LoopMembers.Criminal_History__c}=TRUE,&quot;Yes&quot;,&quot;&quot;) &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* CRIMINAL HISTORY */
+&quot;  &lt;/tr&gt;&quot; &amp; BR()</expression>
+    </formulas>
+    <formulas>
+        <name>f_HousingMembersTableHeader</name>
+        <dataType>String</dataType>
+        <expression>{!f_headerStyle} &amp;
+&apos;  &lt;tr bgcolor=&quot;&apos; &amp; {!f_htmlBgHeaderColor} &amp; &apos;&quot; style=&quot;color: white;&quot;&gt;&apos; &amp; BR() &amp;
+&quot;    &lt;th&gt;&lt;strong&gt;Name&lt;/strong&gt;&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;Relation to Client&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;Head of Household&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;Birthday&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;Age&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;Service Animal&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;Pet (Non Service Animal)&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;Prior Eviction&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;Bad Credit&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;Full TIme Student&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;Limited Mobility&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;Criminal History&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;  &lt;/tr&gt;&quot; &amp; BR()</expression>
+    </formulas>
+    <formulas>
+        <name>f_HousingNeedsRow</name>
+        <dataType>String</dataType>
+        <expression>&quot;&lt;tr&gt;&quot; &amp; 
+&quot;    &lt;td&gt;&quot; &amp; TEXT({!LoopHousingNeeds.Housing_Member_Number__c}) &amp; &quot;&lt;/td&gt;&quot; &amp; 
+&quot;    &lt;td&gt;&quot; &amp; TEXT({!LoopHousingNeeds.HH_Income_Monthly__c}) &amp; &quot;&lt;/td&gt;&quot; &amp; 
+&quot;    &lt;td&gt;&quot; &amp; 
+    IF(
+        INCLUDES({!LoopHousingNeeds.Bedrooms_Wanted__c}, &quot;Room&quot;),
+        &quot;Room, &quot;,
+        &quot;&quot;
+    ) &amp; 
+    IF(
+        INCLUDES({!LoopHousingNeeds.Bedrooms_Wanted__c}, &quot;Studio&quot;),
+        &quot;Studio, &quot;,
+        &quot;&quot;
+    ) &amp; 
+    IF(
+        INCLUDES({!LoopHousingNeeds.Bedrooms_Wanted__c}, &quot;1 Bedroom&quot;),
+        &quot;1 Bedroom, &quot;,
+        &quot;&quot;
+    ) &amp; 
+    IF(
+        INCLUDES({!LoopHousingNeeds.Bedrooms_Wanted__c}, &quot;2 Bedroom&quot;),
+        &quot;2 Bedroom, &quot;,
+        &quot;&quot;
+    ) &amp; 
+    IF(
+        INCLUDES({!LoopHousingNeeds.Bedrooms_Wanted__c}, &quot;3 Bedroom&quot;),
+        &quot;3 Bedroom, &quot;,
+        &quot;&quot;
+    ) &amp; 
+    IF(
+        INCLUDES({!LoopHousingNeeds.Bedrooms_Wanted__c}, &quot;4 Bedroom&quot;),
+        &quot;4 Bedroom, &quot;,
+        &quot;&quot;
+    ) &amp; 
+    IF(
+        INCLUDES({!LoopHousingNeeds.Bedrooms_Wanted__c}, &quot;5+ Bedroom&quot;),
+        &quot;5+ Bedroom&quot;,
+        &quot;&quot;
+    ) &amp; 
+    &quot;&lt;/td&gt;&quot; &amp; 
+&quot;    &lt;td&gt;&quot; &amp; TEXT({!LoopHousingNeeds.Desired_Rent__c}) &amp; &quot;&lt;/td&gt;&quot; &amp; 
+&quot;    &lt;td&gt;&quot; &amp; {!LoopHousingNeeds.Geographic_Preferences__c} &amp; &quot;&lt;/td&gt;&quot; &amp; 
+&quot;    &lt;td&gt;&quot; &amp; TEXT({!LoopHousingNeeds.Affordable_if_income_3x_rent__c}) &amp; &quot;&lt;/td&gt;&quot; &amp; 
+&quot;    &lt;td&gt;&quot; &amp; TEXT({!LoopHousingNeeds.Affordable_if_income_2_5x_rent__c}) &amp; &quot;&lt;/td&gt;&quot; &amp; 
+&quot;    &lt;td&gt;&quot; &amp; TEXT({!LoopHousingNeeds.Affordable_if_income_2x_rent__c}) &amp; &quot;&lt;/td&gt;&quot; &amp; 
+&quot;    &lt;td&gt;&quot; &amp; TEXT({!LoopHousingNeeds.Would_Consider_Roommate__c}) &amp; &quot;&lt;/td&gt;&quot; &amp; 
+&quot;    &lt;td&gt;&quot; &amp; 
+    IF(
+        INCLUDES({!LoopHousingNeeds.Accessibility_Needs__c}, &quot;No Accessibility Needs&quot;),
+        &quot;No Accessibility Needs, &quot;,
+        &quot;&quot;
+    ) &amp; 
+    IF(
+        INCLUDES({!LoopHousingNeeds.Accessibility_Needs__c}, &quot;Wheelchair accessible&quot;),
+        &quot;Wheelchair accessible, &quot;,
+        &quot;&quot;
+    ) &amp; 
+    IF(
+        INCLUDES({!LoopHousingNeeds.Accessibility_Needs__c}, &quot;Groundfloor only&quot;),
+        &quot;Groundfloor only, &quot;,
+        &quot;&quot;
+    ) &amp; 
+    IF(
+        INCLUDES({!LoopHousingNeeds.Accessibility_Needs__c}, &quot;Visually Impaired&quot;),
+        &quot;Visually Impaired, &quot;,
+        &quot;&quot;
+    ) &amp; 
+    IF(
+        INCLUDES({!LoopHousingNeeds.Accessibility_Needs__c}, &quot;Hard of hearing / Deaf&quot;),
+        &quot;Hard of hearing / Deaf&quot;,
+        &quot;&quot;
+    ) &amp; 
+    &quot;&lt;/td&gt;&quot; &amp; 
+&quot;&lt;/tr&gt;&quot;</expression>
+    </formulas>
+    <formulas>
+        <name>f_HousingNeedsTableHeader</name>
+        <dataType>String</dataType>
+        <expression>{!f_headerStyle} &amp;
+&apos;  &lt;tr bgcolor=&quot;&apos; &amp; {!f_htmlBgHeaderColor} &amp; &apos;&quot; style=&quot;color: white;&quot;&gt;&apos; &amp; BR() &amp;
+&quot;    &lt;th&gt;Housing Member Number&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;HH Income Monthly&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;Bedrooms Wanted&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;Desired Rent&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;Geographic Preferences&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;Affordable if income 3x rent&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;Affordable if income 2.5x rent&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;Affordable if income 2x rent&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;Would Consider Roommate&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;Accessibility Needs&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;  &lt;/tr&gt;&quot; &amp; BR()</expression>
+    </formulas>
+    <formulas>
+        <name>f_HousingSelectionCriteriaRow</name>
+        <dataType>String</dataType>
+        <expression>&quot;&lt;tr&gt;&quot; &amp; 
+&quot;    &lt;td&gt;&quot; &amp; {!LoopHousingSelectionCriteria.Geographic_Preferences__c} &amp; &quot;&lt;/td&gt;&quot; &amp; 
+
+&quot;    &lt;td&gt;&quot; &amp; 
+    IF(
+        INCLUDES({!LoopHousingSelectionCriteria.Bedrooms_Wanted__c}, &quot;Room&quot;),
+        &quot;Room, &quot;,
+        &quot;&quot;
+    ) &amp; 
+    IF(
+        INCLUDES({!LoopHousingSelectionCriteria.Bedrooms_Wanted__c}, &quot;Studio&quot;),
+        &quot;Studio, &quot;,
+        &quot;&quot;
+    ) &amp; 
+    IF(
+        INCLUDES({!LoopHousingSelectionCriteria.Bedrooms_Wanted__c}, &quot;1 Bedroom&quot;),
+        &quot;1 Bedroom, &quot;,
+        &quot;&quot;
+    ) &amp; 
+    IF(
+        INCLUDES({!LoopHousingSelectionCriteria.Bedrooms_Wanted__c}, &quot;2 Bedroom&quot;),
+        &quot;2 Bedroom, &quot;,
+        &quot;&quot;
+    ) &amp; 
+    IF(
+        INCLUDES({!LoopHousingSelectionCriteria.Bedrooms_Wanted__c}, &quot;3 Bedroom&quot;),
+        &quot;3 Bedroom, &quot;,
+        &quot;&quot;
+    ) &amp; 
+    IF(
+        INCLUDES({!LoopHousingSelectionCriteria.Bedrooms_Wanted__c}, &quot;4 Bedroom&quot;),
+        &quot;4 Bedroom, &quot;,
+        &quot;&quot;
+    ) &amp; 
+    IF(
+        INCLUDES({!LoopHousingSelectionCriteria.Bedrooms_Wanted__c}, &quot;5+ Bedroom&quot;),
+        &quot;5+ Bedroom&quot;,
+        &quot;&quot;
+    ) &amp; 
+    &quot;&lt;/td&gt;&quot; &amp; 
+
+&quot;    &lt;td&gt;&quot; &amp; TEXT({!LoopHousingSelectionCriteria.HH_Voucher_Income_Monthly__c}) &amp; &quot;&lt;/td&gt;&quot; &amp; 
+
+&quot;    &lt;td&gt;&quot; &amp; 
+    IF(
+        INCLUDES({!LoopHousingSelectionCriteria.Accessibility_Needs__c}, &quot;No Accessibility Needs&quot;),
+        &quot;No Accessibility Needs, &quot;,
+        &quot;&quot;
+    ) &amp; 
+    IF(
+        INCLUDES({!LoopHousingSelectionCriteria.Accessibility_Needs__c}, &quot;Wheelchair accessible&quot;),
+        &quot;Wheelchair accessible, &quot;,
+        &quot;&quot;
+    ) &amp; 
+    IF(
+        INCLUDES({!LoopHousingSelectionCriteria.Accessibility_Needs__c}, &quot;Groundfloor only&quot;),
+        &quot;Groundfloor only, &quot;,
+        &quot;&quot;
+    ) &amp; 
+    IF(
+        INCLUDES({!LoopHousingSelectionCriteria.Accessibility_Needs__c}, &quot;Visually Impaired&quot;),
+        &quot;Visually Impaired, &quot;,
+        &quot;&quot;
+    ) &amp; 
+    IF(
+        INCLUDES({!LoopHousingSelectionCriteria.Accessibility_Needs__c}, &quot;Hard of hearing / Deaf&quot;),
+        &quot;Hard of hearing / Deaf&quot;,
+        &quot;&quot;
+    ) &amp; 
+    &quot;&lt;/td&gt;&quot; &amp; 
+
+&quot;    &lt;td&gt;&quot; &amp; TEXT({!LoopHousingSelectionCriteria.HH_Income_Monthly__c}) &amp; &quot;&lt;/td&gt;&quot; &amp; 
+&quot;    &lt;td&gt;&quot; &amp; TEXT({!LoopHousingSelectionCriteria.Affordable_if_income_2x_rent__c}) &amp; &quot;&lt;/td&gt;&quot; &amp; 
+&quot;    &lt;td&gt;&quot; &amp; TEXT({!LoopHousingSelectionCriteria.Affordable_if_income_2_5x_rent__c}) &amp; &quot;&lt;/td&gt;&quot; &amp; 
+&quot;    &lt;td&gt;&quot; &amp; TEXT({!LoopHousingSelectionCriteria.Affordable_if_income_3x_rent__c}) &amp; &quot;&lt;/td&gt;&quot; &amp; 
+&quot;&lt;/tr&gt;&quot;</expression>
+    </formulas>
+    <formulas>
+        <name>f_HousingSelectionCriteriaTableHeader</name>
+        <dataType>String</dataType>
+        <expression>{!f_headerStyle} &amp;
+&apos;  &lt;tr bgcolor=&quot;&apos; &amp; {!f_htmlBgHeaderColor} &amp; &apos;&quot; style=&quot;color: white;&quot;&gt;&apos; &amp; BR() &amp;
+&quot;    &lt;th&gt;Geographic Preferences&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;Bedrooms Wanted&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;&lt;strong&gt;HH Voucher Income Monthly&lt;/strong&gt;&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;Accessibility Needs&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;HH Income Monthly&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;Affordable if income 2x rent&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;Affordable if income 2.5x rent&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;Affordable if income 3x rent&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;  &lt;/tr&gt;&quot; &amp; BR()</expression>
+    </formulas>
+    <formulas>
+        <name>f_HousingStrengthChallengesTableHeader</name>
+        <dataType>String</dataType>
+        <expression>{!f_headerStyle} &amp;
+&apos;  &lt;tr bgcolor=&quot;&apos; &amp; {!f_htmlBgHeaderColor} &amp; &apos;&quot; style=&quot;color: white;&quot;&gt;&apos; &amp; BR() &amp;
+&quot;    &lt;th&gt;&lt;strong&gt;Name&lt;/strong&gt;&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;Type&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;Description&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;  &lt;/tr&gt;&quot; &amp; BR()</expression>
+    </formulas>
+    <formulas>
+        <name>f_HousingStrengthRow</name>
+        <dataType>String</dataType>
+        <expression>&quot;  &lt;tr&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;td&gt;&quot; &amp; {!LoopHousingStrengths.Name} &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* NAME */
+&quot;    &lt;td&gt;&quot; &amp; TEXT( {!LoopHousingStrengths.Type__c} ) &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* Strength Type */
+&quot;    &lt;td&gt;&quot; &amp; {!LoopHousingStrengths.Description__c} &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* Strength Description */
+&quot;  &lt;/tr&gt;&quot; &amp; BR()</expression>
+    </formulas>
+    <formulas>
+        <name>f_htmlBgHeaderColor</name>
+        <dataType>String</dataType>
+        <expression>&quot;#408cd4&quot;</expression>
+    </formulas>
+    <formulas>
+        <name>f_htmlBgLightColor</name>
+        <dataType>String</dataType>
+        <expression>&quot;#ecf4fb&quot;</expression>
+    </formulas>
+    <formulas>
+        <name>f_LongTermHousingGoalsRow</name>
+        <dataType>String</dataType>
+        <expression>&quot;  &lt;tr&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;td&gt;&quot; &amp; {!LoopLongTermHousingGoals.Name} &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* Long Term Housing Goal Name */
+&quot;    &lt;td&gt;&quot; &amp; TEXT( {!LoopLongTermHousingGoals.Housing_Goal__c} ) &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* Long Term Housing Goal */
+&quot;    &lt;td&gt;&quot; &amp; {!LoopLongTermHousingGoals.Description__c} &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* Housing Goal Description */
+&quot;  &lt;/tr&gt;&quot; &amp; BR()</expression>
+    </formulas>
+    <formulas>
+        <name>f_MainHeader</name>
+        <dataType>String</dataType>
+        <expression>&quot;&lt;div style=&apos;text-align: center; font-family: Arial, sans-serif; margin-top: 20px;&apos;&gt;&quot; &amp; 
+  &quot;&lt;img src=&apos;https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Home_icon_blue-512.png/600px-Home_icon_blue-512.png&apos; alt=&apos;Home Icon&apos; style=&apos;width: 80px; height: 80px;&apos;&gt;&quot; &amp; BR() &amp;
+  &quot;&lt;h2&gt;Housing Assessment and Plan&lt;/h2&gt;&quot; &amp; BR() &amp; 
+  &quot;&lt;p&gt;&lt;strong&gt;&quot; &amp; {!Contact.Name} &amp; &quot;&lt;/strong&gt;&lt;br&gt;UCI: &quot; &amp; {!Contact.UCI__c} &amp; &quot;&lt;br&gt;&quot; &amp; TEXT({!$Flow.CurrentDate}) &amp; &quot;&lt;/p&gt;&quot; &amp; BR() &amp; 
+&quot;&lt;/div&gt;&quot; &amp; BR() &amp; 
+&quot;&lt;p style=&apos;text-align: center; font-family: Arial, sans-serif; margin: 20px;&apos;&gt;&quot; &amp; 
+  &quot;This plan contains confidential information and it is intended only for the client, their circle of support, and the Regional Center Service Coordinator. This plan will evolve and change and be updated from time to time as necessary.&quot; &amp; 
+&quot;&lt;/p&gt;&quot; &amp; BR() &amp; 
+&quot;&lt;p style=&apos;font-family: Arial, sans-serif; margin-left: 20px;&apos;&gt;&lt;H1&gt;&lt;strong&gt;Housing Plan Summary:&lt;/strong&gt;&lt;/h1&gt;&lt;/p&gt;&quot;</expression>
+    </formulas>
+    <formulas>
+        <name>f_OrgWideEmail_Id</name>
+        <dataType>String</dataType>
+        <expression>{!OrgWideEmailAddress.Id}</expression>
+    </formulas>
+    <formulas>
+        <name>f_ResidentCoordinatorWillText</name>
+        <dataType>String</dataType>
+        <expression>&quot;&lt;p&gt;(1) Assist &quot; &amp; {!Contact.Full_Name__c} &amp; &quot; and household members in understanding the lease terms and property rules before he/she moves in, and answer any questions they may have about their tenant rights and responsibilities after move-in.&lt;/p&gt;&quot; &amp; BR() &amp;
+
+&quot;&lt;p&gt;(2) Provide information and advice to client and household members to assist them with any short-term budgeting challenges they may face, to support them in paying the rent on time and avoiding late charges or lease violations.&lt;/p&gt;&quot; &amp; BR() &amp;
+
+&quot;&lt;p&gt;(3) Develop a plan with client and household members to address any barriers they may face in meeting their rental obligations.&lt;/p&gt;&quot; &amp; BR() &amp;
+
+&quot;&lt;p&gt;(4) Have a weekly check-in with either client and household members to learn of any questions or problems they are having at the property.&lt;/p&gt;&quot; &amp; BR() &amp;
+
+&quot;&lt;p&gt;(5) Advise client and household members on how to prepare for a successful inspection of their unit and advise them on any follow-up required by the property manager.&lt;/p&gt;&quot; &amp; BR() &amp;
+
+&quot;&lt;p&gt;(6) Advise client and household members on how to prepare for their annual re-certification of eligibility for the property and advise them on any follow-up required by the property manager.&lt;/p&gt;&quot; &amp; BR() &amp;
+
+&quot;&lt;p&gt;(7) Advise and support client and household members in requesting and receiving needed maintenance at their unit in areas that are the responsibility of the property manager.&lt;/p&gt;&quot; &amp; BR() &amp;
+
+&quot;&lt;p&gt;(8) Advise and support client and household members in pursuing any requests for reasonable accommodations that may be needed because of client&apos;s disability.&lt;/p&gt;&quot; &amp; BR() &amp;
+
+&quot;&lt;p&gt;(9) Advise and support client and household members in responding to any complaints they receive from neighbors or any complaints they would like to make about their neighbors.&lt;/p&gt;&quot; &amp; BR() &amp;
+
+&quot;&lt;p&gt;(10) Meet regularly with the &quot; &amp; TEXT({!Contact.Partner_Property__c}) &amp; &quot; property manager to identify well in advance of a lease violation notice any problems or concerns of the property manager with respect to client and household members&apos; lease compliance.&lt;/p&gt;&quot; &amp; BR() &amp;
+
+&quot;&lt;p&gt;(11) Organize and invite client and household members to Housing Choices sponsored events designed to promote a positive, inclusive, and supportive living environment at &quot; &amp; TEXT({!Contact.Partner_Property__c}) &amp; &quot;.&lt;/p&gt;&quot; &amp; BR() &amp;
+
+&quot;&lt;p&gt;(12) Provide other assistance as may be needed to help the household achieve their goals of establishing a positive rental history and creating a satisfying home environment at &quot; &amp; TEXT({!Contact.Partner_Property__c}) &amp; &quot; Apartments.&lt;/p&gt;&quot;</expression>
+    </formulas>
+    <formulas>
+        <name>f_ResidentialHistoryRow</name>
+        <dataType>String</dataType>
+        <expression>&quot;  &lt;tr&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;td&gt;&quot; &amp; {!LoopResidentialHistory.Address_1__c} &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* Address 1 */
+&quot;    &lt;td&gt;&quot; &amp; TEXT({!LoopResidentialHistory.Move_In_Date__c}) &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* Move In Date */
+&quot;    &lt;td&gt;&quot; &amp; TEXT({!LoopResidentialHistory.Move_Out_Date__c}) &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* Move Out Date */
+&quot;    &lt;td&gt;&quot; &amp; TEXT({!LoopResidentialHistory.Months_Rented__c}) &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* Months Rented (Currency) */
+&quot;    &lt;td&gt;&quot; &amp; TEXT({!LoopResidentialHistory.Monthly_Rent__c}) &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* Monthly Rent (Number) */
+&quot;    &lt;td&gt;&quot; &amp; {!LoopResidentialHistory.Landlord_Name__c} &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* Landlord Name */
+&quot;    &lt;td&gt;&quot; &amp; {!LoopResidentialHistory.Landlord_Email__c} &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* Landlord Email */
+&quot;    &lt;td&gt;&quot; &amp; {!LoopResidentialHistory.Landlord_Phone__c} &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* Landlord Phone */
+&quot;    &lt;td&gt;&quot; &amp; IF({!LoopResidentialHistory.Eviction__c}=TRUE, &quot;Yes&quot;, &quot;No&quot;) &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* Eviction */
+&quot;    &lt;td&gt;&quot; &amp; IF({!LoopResidentialHistory.Unpaid_Balance__c}=TRUE, &quot;Yes&quot;, &quot;No&quot;) &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* Unpaid Balance */
+&quot;    &lt;td&gt;&quot; &amp; TEXT({!LoopResidentialHistory.Type_of_Housing__c}) &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* Type  (Picklist) */
+&quot;    &lt;td&gt;&quot; &amp; {!LoopResidentialHistory.Issues__c} &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* Issues */
+&quot;  &lt;/tr&gt;&quot; &amp; BR()</expression>
+    </formulas>
+    <formulas>
+        <name>f_ResidentialHistoryTableHeader</name>
+        <dataType>String</dataType>
+        <expression>{!f_headerStyle} &amp;
+&apos;  &lt;tr bgcolor=&quot;&apos; &amp; {!f_htmlBgHeaderColor} &amp; &apos;&quot; style=&quot;color: white;&quot;&gt;&apos; &amp; BR() &amp;
+&quot;    &lt;th&gt;&lt;strong&gt;Address 1&lt;/strong&gt;&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;&lt;strong&gt;Move In Date&lt;/strong&gt;&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;&lt;strong&gt;Move Out Date&lt;/strong&gt;&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;&lt;strong&gt;Months Rented&lt;/strong&gt;&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;&lt;strong&gt;Monthly Rent&lt;/strong&gt;&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;&lt;strong&gt;Landlord Name&lt;/strong&gt;&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;&lt;strong&gt;Landlord Email&lt;/strong&gt;&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;&lt;strong&gt;Landlord Phone&lt;/strong&gt;&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;&lt;strong&gt;Eviction&lt;/strong&gt;&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;&lt;strong&gt;Unpaid Balance&lt;/strong&gt;&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;&lt;strong&gt;Type&lt;/strong&gt;&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;&lt;strong&gt;Issues&lt;/strong&gt;&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;  &lt;/tr&gt;&quot; &amp; BR()</expression>
+    </formulas>
+    <formulas>
+        <name>f_ShortTermHousingGoalsRow</name>
+        <dataType>String</dataType>
+        <expression>&quot;  &lt;tr&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;td&gt;&quot; &amp; {!LoopShortTermHousingGoals.Name} &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* Short Term Housing Goal Name */
+&quot;    &lt;td&gt;&quot; &amp; TEXT( {!LoopShortTermHousingGoals.Housing_Goal__c} ) &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* Short Term Housing Goal */
+&quot;    &lt;td&gt;&quot; &amp; {!LoopShortTermHousingGoals.Description__c} &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /*  Short Term Housing Goal Description */
+&quot;  &lt;/tr&gt;&quot; &amp; BR()</expression>
+    </formulas>
+    <formulas>
+        <name>f_ShortTermLongTermHousingGoalsTableHeader</name>
+        <dataType>String</dataType>
+        <expression>{!f_headerStyle} &amp;
+&apos;  &lt;tr bgcolor=&quot;&apos; &amp; {!f_htmlBgHeaderColor} &amp; &apos;&quot; style=&quot;color: white;&quot;&gt;&apos; &amp; BR() &amp;
+&quot;    &lt;th&gt;&lt;strong&gt;Name&lt;/strong&gt;&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;Short Term Housing Goal&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;Description&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;  &lt;/tr&gt;&quot; &amp; BR()</expression>
+    </formulas>
+    <formulas>
+        <name>f_tableFooter</name>
+        <dataType>String</dataType>
+        <expression>&quot;  &lt;/tr&gt;&quot; &amp; BR() &amp;
+&quot;&lt;/table&gt;&quot; &amp; BR() &amp;
+&quot;&lt;br&gt; &lt;br&gt;&quot; &amp; BR() &amp; BR()</expression>
+    </formulas>
+    <formulas>
+        <name>f_tableHeaderClose</name>
+        <dataType>String</dataType>
+        <expression>&quot;  &lt;/tr&gt;&quot; &amp; BR()</expression>
+    </formulas>
+    <formulas>
+        <name>f_TransportationDocumentationRow</name>
+        <dataType>String</dataType>
+        <expression>&quot;  &lt;tr&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;td&gt;&quot; &amp; {!LoopTransportationDocumentation.Transportation_Method__c} &amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* TRANSPORTATION METHOD */
+&quot;    &lt;td&gt;&quot; &amp; 
+      IF( TEXT ({!LoopTransportationDocumentation.Missing_Documentation__c}) = &quot;Yes&quot;, &quot;Yes&quot;, &quot;No&quot; ) 
+&amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* MISSING DOCUMENTATION */
+&quot;    &lt;td&gt;&quot; &amp; {!LoopTransportationDocumentation.Documents_Missing__c}&amp; &quot;&lt;/td&gt;&quot; &amp; BR() &amp; /* DOCUMENT MISSING */
+&quot;  &lt;/tr&gt;&quot; &amp; BR()</expression>
+    </formulas>
+    <formulas>
+        <name>f_TransportationDocumentationTableHeader</name>
+        <dataType>String</dataType>
+        <expression>{!f_headerStyle} &amp;
+&apos;  &lt;tr bgcolor=&quot;&apos; &amp; {!f_htmlBgHeaderColor} &amp; &apos;&quot; style=&quot;color: white;&quot;&gt;&apos; &amp; BR() &amp;
+&quot;    &lt;th&gt;&lt;strong&gt;Transportation Method&lt;/strong&gt;&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;&lt;strong&gt;Documents Missing&lt;/strong&gt;&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;&lt;strong&gt;Missing Documentation&lt;/strong&gt;&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;  &lt;/tr&gt;&quot; &amp; BR()</expression>
+    </formulas>
+    <formulas>
+        <name>f_WaitlistEntiresTableHeader</name>
+        <dataType>String</dataType>
+        <expression>{!f_headerStyle} &amp;
+&apos;  &lt;tr bgcolor=&quot;&apos; &amp; {!f_htmlBgHeaderColor} &amp; &apos;&quot; style=&quot;color: white;&quot;&gt;&apos; &amp; BR() &amp;
+&quot;    &lt;th&gt;&lt;strong&gt;Waitlist Entry: Waitlist Entry Name&lt;/strong&gt;&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;Property: Property&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;    &lt;th&gt;Waitlist Entry: Timestamp&lt;/th&gt;&quot; &amp; BR() &amp;
+&quot;  &lt;/tr&gt;&quot; &amp; BR()</expression>
+    </formulas>
+    <formulas>
+        <name>f_WaitlistEntriesRow</name>
+        <dataType>String</dataType>
+        <expression>&quot;&lt;tr&gt;&quot; &amp; 
+&quot;    &lt;td&gt;&quot; &amp; {!LoopWaitlistEntries.Name} &amp; &quot;&lt;/td&gt;&quot; &amp; 
+&quot;    &lt;td&gt;&quot; &amp; {!LoopWaitlistEntries.Property__r.Name} &amp; &quot;&lt;/td&gt;&quot; &amp; 
+&quot;    &lt;td&gt;&quot; &amp; TEXT({!LoopWaitlistEntries.Waitlist_Timestamp__c}) &amp; &quot;&lt;/td&gt;&quot; &amp; 
+&quot;&lt;/tr&gt;&quot;</expression>
+    </formulas>
+    <interviewLabel>Contact - Emailed Housing Plan Report {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Contact - Emailed Housing Plan Report</label>
+    <loops>
+        <name>LoopAsset</name>
+        <label>LoopAsset</label>
+        <locationX>50</locationX>
+        <locationY>6158</locationY>
+        <collectionReference>Asset</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>AssignAssetRowValues</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>AssignAssetTableEnd</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <name>LoopBackgroundInfo</name>
+        <label>LoopBackgroundInfo</label>
+        <locationX>50</locationX>
+        <locationY>998</locationY>
+        <collectionReference>BankgroundInfo</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>AssignbackgrounbdInfoRowValues</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>AssignBackgroundInfoEnd</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <name>LoopCircleofSupport</name>
+        <label>LoopCircleofSupport</label>
+        <locationX>50</locationX>
+        <locationY>2030</locationY>
+        <collectionReference>Circle_of_Support</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>AssignCircleofSupportRows</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>AssignCircleofSupportTableEnd</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <name>LoopContactDetails</name>
+        <label>LoopContactDetails</label>
+        <locationX>50</locationX>
+        <locationY>8222</locationY>
+        <collectionReference>Contact_Details</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>AssignContactDetailsRowValues</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>AssignContactDetailsTableEnd</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <name>LoopDebt</name>
+        <label>LoopDebt</label>
+        <locationX>50</locationX>
+        <locationY>7190</locationY>
+        <collectionReference>Debt</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>AssignDebtRowValues</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>AssignDebtTableEnd</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <name>LoopEmploymentHistory</name>
+        <label>LoopEmploymentHistory</label>
+        <locationX>50</locationX>
+        <locationY>5126</locationY>
+        <collectionReference>EmploymentHistory</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>AssignEmploymentHistoryRowValues</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>AssignEmploymentHistoryTableEnd</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <name>LoopHouseholdIncome</name>
+        <label>LoopHouseholdIncome</label>
+        <locationX>50</locationX>
+        <locationY>4094</locationY>
+        <collectionReference>HouseHoldIncome</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>AssignLongTermHousingGoalRowValues</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>AssignHouseholdIncomeTableEnd</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <name>LoopHousingApplication</name>
+        <label>LoopHousingApplication</label>
+        <locationX>50</locationX>
+        <locationY>13382</locationY>
+        <collectionReference>HousingApplications</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>AssignHousingApplicationRowValues</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>AssignHousinghApplicationTableEnd</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <name>LoopHousingChallenges</name>
+        <label>LoopHousingChallenges</label>
+        <locationX>50</locationX>
+        <locationY>15446</locationY>
+        <collectionReference>HousingChallenges</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>AssignHousingChallengeRowValues</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>AssignHousinghChallengeTableEnd</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <name>LoopHousingNeeds</name>
+        <label>LoopHousingNeeds</label>
+        <locationX>50</locationX>
+        <locationY>11318</locationY>
+        <collectionReference>HousingNeeds</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>AssignHousingNeedsRowValues</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>AssignHousingNeedTableEnd</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <name>LoopHousingSelectionCriteria</name>
+        <label>LoopHousingSelectionCriteria</label>
+        <locationX>50</locationX>
+        <locationY>16478</locationY>
+        <collectionReference>HousingSelectionCriteria</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>AssignHousingSelectionCriteriaRowValues</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>AssignHousingSelectionCriteriaTableEnd</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <name>LoopHousingStrengths</name>
+        <label>LoopHousingStrengths</label>
+        <locationX>50</locationX>
+        <locationY>14414</locationY>
+        <collectionReference>HousingStrengths</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>AssignHousingStrengthRowValues</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>AssignHousinghStrengthTableEnd</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <name>LoopLongTermHousingGoals</name>
+        <label>LoopLongTermHousingGoals</label>
+        <locationX>50</locationX>
+        <locationY>18542</locationY>
+        <collectionReference>LongTermHousingGoals</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>AssignLongTermHousingGoalsRowValues</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>AssignLongTermHousingGoalsTableEnd</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <name>LoopMembers</name>
+        <label>LoopMembers</label>
+        <locationX>50</locationX>
+        <locationY>3062</locationY>
+        <collectionReference>HousingMembers</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>AssignHousingMembersRowValues</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>AssignHousingMembersEnd</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <name>LoopResidentialHistory</name>
+        <label>LoopResidentialHistory</label>
+        <locationX>50</locationX>
+        <locationY>9254</locationY>
+        <collectionReference>ResidentialHistory</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>AssignResidentialHistoryRowValues</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>AssignResidentialHistoryTableEnd</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <name>LoopShortTermHousingGoals</name>
+        <label>LoopShortTermHousingGoals</label>
+        <locationX>50</locationX>
+        <locationY>17510</locationY>
+        <collectionReference>ShortTermHousingGoals</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>AssignShortTermHousingGoalsRowValues</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>AssignShortTermHousingGoalsTableEnd</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <name>LoopTransportationDocumentation</name>
+        <label>LoopTransportationDocumentation</label>
+        <locationX>50</locationX>
+        <locationY>10286</locationY>
+        <collectionReference>TransportationDocumentation</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>AssignTransportationDocumentationRowValues</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>AssignTransportationDocumentationTableEnd</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <name>LoopWaitlistEntries</name>
+        <label>LoopWaitlistEntries</label>
+        <locationX>50</locationX>
+        <locationY>12350</locationY>
+        <collectionReference>Waitlist_Entries</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>AssignWaitlistEntriesRowValues</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>AssignWaitlistEntriesTableEnd</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordCreates>
+        <name>MakeLog1</name>
+        <label>MakeLog1</label>
+        <locationX>182</locationX>
+        <locationY>242</locationY>
+        <connector>
+            <targetReference>Contact</targetReference>
+        </connector>
+        <inputReference>Log</inputReference>
+    </recordCreates>
+    <recordCreates>
+        <name>MakeLog2</name>
+        <label>MakeLog2</label>
+        <locationX>182</locationX>
+        <locationY>19790</locationY>
+        <inputReference>Log</inputReference>
+    </recordCreates>
+    <recordLookups>
+        <name>Asset</name>
+        <label>Asset</label>
+        <locationX>182</locationX>
+        <locationY>5726</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>AssetCount</targetReference>
+        </connector>
+        <filterLogic>1 AND (2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8)</filterLogic>
+        <filters>
+            <field>Contact__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Asset_or_Debt_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Checking</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Asset_or_Debt_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Savings</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Asset_or_Debt_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Cal Able account</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Asset_or_Debt_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>401k</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Asset_or_Debt_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Real Property</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Asset_or_Debt_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Special Needs Trust</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Asset_or_Debt_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Other asset</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Asset_Debt__c</object>
+        <sortField>Name</sortField>
+        <sortOrder>Asc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>BankgroundInfo</name>
+        <label>BankgroundInfo</label>
+        <locationX>182</locationX>
+        <locationY>566</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>AssignBackgroundInfo</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Contact</object>
+        <sortField>Name</sortField>
+        <sortOrder>Asc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Circle_of_Support</name>
+        <label>Circle of Support</label>
+        <locationX>182</locationX>
+        <locationY>1598</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>AssignCircleofSupport</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Contact</object>
+        <sortField>Name</sortField>
+        <sortOrder>Asc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Contact</name>
+        <label>Contact</label>
+        <locationX>182</locationX>
+        <locationY>350</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>AssignMainHeader</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Contact</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Contact_Details</name>
+        <label>Contact Details</label>
+        <locationX>182</locationX>
+        <locationY>7790</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>ContactDetailsCount</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Contact</object>
+        <sortField>Name</sortField>
+        <sortOrder>Asc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Debt</name>
+        <label>Debt</label>
+        <locationX>182</locationX>
+        <locationY>6758</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>DebtCount</targetReference>
+        </connector>
+        <filterLogic>1 AND (2 OR 3 OR 4 OR 5)</filterLogic>
+        <filters>
+            <field>Contact__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Asset_or_Debt_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Credit Card Debt</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Asset_or_Debt_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Paydate Loan</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Asset_or_Debt_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Mortage</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Asset_or_Debt_Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Other consumer debt</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Asset_Debt__c</object>
+        <sortField>Name</sortField>
+        <sortOrder>Asc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>EmploymentHistory</name>
+        <label>EmploymentHistory</label>
+        <locationX>182</locationX>
+        <locationY>4694</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>AssignEmploymentCount</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Contact__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Employment_History__c</object>
+        <sortField>Housing_Member__c</sortField>
+        <sortOrder>Asc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>HouseHoldIncome</name>
+        <label>HouseHoldIncome</label>
+        <locationX>182</locationX>
+        <locationY>3662</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>AssignHouseholdIncome</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Contact</object>
+        <sortField>Name</sortField>
+        <sortOrder>Asc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>HousingApplications</name>
+        <label>HousingApplications</label>
+        <locationX>182</locationX>
+        <locationY>12950</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>HousingApplicationCount</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Contact__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Housing_Application__c</object>
+        <sortField>Property_Name__c</sortField>
+        <sortOrder>Asc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>HousingChallenges</name>
+        <label>HousingChallenges</label>
+        <locationX>182</locationX>
+        <locationY>15014</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>HousingChallengesCount</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Contact__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>RecordType_Name__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Challenge</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Housing_Strength_or_Challenge__c</object>
+        <sortField>Name</sortField>
+        <sortOrder>Asc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>HousingMembers</name>
+        <label>HousingMembers</label>
+        <locationX>182</locationX>
+        <locationY>2630</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>AssignHousingMembers</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Contact__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Housing_Member__c</object>
+        <sortField>Name</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>HousingNeeds</name>
+        <label>HousingNeeds</label>
+        <locationX>182</locationX>
+        <locationY>10886</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>HousingNeedsCount</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Contact</object>
+        <sortField>Name</sortField>
+        <sortOrder>Asc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>HousingSelectionCriteria</name>
+        <label>HousingSelectionCriteria</label>
+        <locationX>182</locationX>
+        <locationY>16046</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>HousingSelectionCriteriaCount</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Contact</object>
+        <sortField>Name</sortField>
+        <sortOrder>Asc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>HousingStrengths</name>
+        <label>HousingStrengths</label>
+        <locationX>182</locationX>
+        <locationY>13982</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>HousingStrengthCount</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Contact__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>RecordType_Name__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Strength</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Housing_Strength_or_Challenge__c</object>
+        <sortField>Name</sortField>
+        <sortOrder>Asc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>LongTermHousingGoals</name>
+        <label>LongTermHousingGoals</label>
+        <locationX>182</locationX>
+        <locationY>18110</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>LongTermHousingGoalsCount</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Contact__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>RecordType_Name__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Long Term Housing Goal</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Housing_Goal__c</object>
+        <sortField>Name</sortField>
+        <sortOrder>Asc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>ManagerUser</name>
+        <label>ManagerUser</label>
+        <locationX>182</locationX>
+        <locationY>19466</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>SendEmail</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$User.ManagerId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>User</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>OrgWideEmailAddress</name>
+        <label>OrgWideEmailAddress</label>
+        <locationX>182</locationX>
+        <locationY>19142</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>ProgramDirector</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Address</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>noreply@housingchoices.org</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>OrgWideEmailAddress</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>PrimarySystemAdmin</name>
+        <label>PrimarySystemAdmin</label>
+        <locationX>182</locationX>
+        <locationY>19358</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>ManagerUser</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>PrimarySystemAdministrator__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>IsActive</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>User</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>ProgramDirector</name>
+        <label>ProgramDirector</label>
+        <locationX>182</locationX>
+        <locationY>19250</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>PrimarySystemAdmin</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>User_Role_Name__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Program Director</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>IsActive</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>User</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>ResidentialHistory</name>
+        <label>ResidentialHistory</label>
+        <locationX>182</locationX>
+        <locationY>8822</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>ResidentialHistoryCount</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Contact__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Housing_History__c</object>
+        <sortField>Name</sortField>
+        <sortOrder>Asc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>ShortTermHousingGoals</name>
+        <label>ShortTermHousingGoals</label>
+        <locationX>182</locationX>
+        <locationY>17078</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>ShortTermHousingGoalsCount</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Contact__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>RecordType_Name__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Short Term Housing Goal</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Housing_Goal__c</object>
+        <sortField>Name</sortField>
+        <sortOrder>Asc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>TransportationDocumentation</name>
+        <label>TransportationDocumentation</label>
+        <locationX>182</locationX>
+        <locationY>9854</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>TransportationDocumentationCount</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Contact</object>
+        <sortField>Name</sortField>
+        <sortOrder>Asc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Waitlist_Entries</name>
+        <label>Waitlist Entries</label>
+        <locationX>182</locationX>
+        <locationY>11918</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>WaitlistEntriesCount</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Contact__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Waitlist_Entry__c</object>
+        <sortField>Name</sortField>
+        <sortOrder>Asc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>AssignLog1</targetReference>
+        </connector>
+    </start>
+    <status>Draft</status>
+    <variables>
+        <name>Log</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Log__e</objectType>
+    </variables>
+    <variables>
+        <name>recordId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>v_AssetTable</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>v_BackgroundInfoTable</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>v_CicleofSupport</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+    </variables>
+    <variables>
+        <name>v_CircleofSupport</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>v_ContactDetailsTable</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>v_CountAsset</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+    </variables>
+    <variables>
+        <name>v_CountBackgroundInfo</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+        <value>
+            <numberValue>0.0</numberValue>
+        </value>
+    </variables>
+    <variables>
+        <name>v_CountContactDetails</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+    </variables>
+    <variables>
+        <name>v_CountDebt</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+    </variables>
+    <variables>
+        <name>v_CountEmploymentHistory</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+    </variables>
+    <variables>
+        <name>v_CountHousingMembers</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+    </variables>
+    <variables>
+        <name>v_CountResidentialHistory</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+    </variables>
+    <variables>
+        <name>v_CountTransportationDocumentation</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+    </variables>
+    <variables>
+        <name>v_DebtTable</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>v_emailBody</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>v_EmploymentTable</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>v_FirstOneBool</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>v_HouseholdIncome</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+    </variables>
+    <variables>
+        <name>v_HouseholdIncomeTable</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>v_HousingApplicationCount</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+    </variables>
+    <variables>
+        <name>v_HousingApplicationTable</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>v_HousingChallengesCount</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+    </variables>
+    <variables>
+        <name>v_HousingChallengeTable</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>v_HousingMembers</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>v_HousingNeedsCount</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+    </variables>
+    <variables>
+        <name>v_HousingNeedsTable</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>v_HousingSelectionCriteriaCount</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+    </variables>
+    <variables>
+        <name>v_HousingSelectionCriteriaTable</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>v_HousingStrengthCount</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+    </variables>
+    <variables>
+        <name>v_HousingStrengthTable</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>v_LongTermHousingGoalsCount</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+    </variables>
+    <variables>
+        <name>v_LongTermHousingGoalsTable</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>v_prevStaff</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>v_prevStatus</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>v_ResidentialHistoryTable</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>v_SelectedRcUserId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>v_ShortTermHousingGoalsCount</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+    </variables>
+    <variables>
+        <name>v_ShortTermHousingGoalsTable</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>v_statusCount</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+    </variables>
+    <variables>
+        <name>v_TableCheck</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>v_TransportationDocumentationTable</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>v_WaitlistEntriesCount</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+    </variables>
+    <variables>
+        <name>v_WaitlistEntriesTable</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>vc_StatusList</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>vc_TempStatusList</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>
